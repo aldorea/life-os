@@ -1,0 +1,11 @@
+{
+  "name": "life-os",
+  "description": "Personal productivity system for Obsidian: daily and weekly notes, goal tracking, meeting prep, inbox processing, training logs, and calendar sync.",
+  "version": "0.1.0",
+  "author": {
+    "name": "aldorea",
+    "url": "https://github.com/aldorea"
+  },
+  "repository": "https://github.com/aldorea/life-os",
+  "license": "MIT"
+}

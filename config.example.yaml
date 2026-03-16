@@ -1,0 +1,88 @@
+# life-os configuration
+# Copy this file to config.yaml and fill in your values.
+
+# Path to your Obsidian vault (absolute path)
+vault_path: ""                    # e.g. /Users/me/Obsidian Vault
+
+# Vault folder structure (relative to vault_path)
+structure:
+  daily_notes: "03 Daily"
+  weekly_notes: "04 Weekly"
+  backlog: "01 Backlog.md"
+  inbox: "02 Inbox.md"
+  calendar_cache: "08 Resources/calendar-cache.md"
+  goals: "config/goals.yaml"
+  constraints: "config/constraints.yaml"
+  jira_notes: "06 Jira"
+  people: "09 People"
+  projects: "05 Projects"
+  training_log: "10 Health/training-log.md"
+  menus: "10 Health/menus"
+  shopping_lists: "11 Nutrition/shopping-lists"
+  connectors_config: "config/connectors.yaml"
+
+# Daily note settings
+daily:
+  date_format: "DD-MM-YYYY"       # File name format
+  default_work_hours: "09:00-18:00"
+  assignee_name: ""               # Your name as it appears in Jira (for filtering)
+
+# Weekly note settings
+weekly:
+  format: "YYYY-W##"             # ISO week format
+  dragged_task_alert: 14          # Days before alerting on dragged tasks
+  goal_deadline_warning: 14       # Days before deadline to warn
+
+# Calendar sync
+calendar:
+  tool: icalbuddy                 # icalbuddy | gcal-cli | none
+  scope_days: 7
+  command: "icalBuddy"            # Command to run (must be installed)
+
+# Communication sync
+communication:
+  tool: slack                     # slack | teams | none
+
+# Training
+training:
+  import_source: heavy-csv        # heavy-csv | strong-csv | none
+  csv_search_path: "~/Downloads/"
+  csv_pattern: "*heavy*"
+  weekly_goal: 3
+  one_rm_formula: "weight * (1 + reps/30)"
+
+# Shopping
+shopping:
+  sections:
+    - "Proteínas"
+    - "Verduras"
+    - "Frutas"
+    - "Lácteos"
+    - "Cereales y legumbres"
+    - "Otros"
+
+# Tags (customize to match your system)
+tags:
+  contexts: ["#work", "#personal"]
+  projects: ["#miportal", "#sherpa", "#previene", "#orbitant", "#lifeos", "#salud"]
+  priority: ["#urgente", "#importante"]
+  actionability: ["#next", "#esperando"]
+
+# Backlog sections
+backlog_sections:
+  - name: "Trabajo — día a día"
+    filter: "#work"
+  - name: "Trabajo — Goals Orbitant"
+    filter: "#work #orbitant"
+  - name: "Proyecto — Previene"
+    filter: "#previene"
+  - name: "Personal"
+    filter: "#personal"
+  - name: "Life OS"
+    filter: "#lifeos"
+  - name: "Algún día"
+    filter: ""
+
+# Contact staleness (for status dashboard)
+contacts:
+  staleness_days: 14
