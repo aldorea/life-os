@@ -19,6 +19,13 @@ structure:
   training_log: "10 Health/training-log.md"
   menus: "10 Health/menus"
   shopping_lists: "11 Nutrition/shopping-lists"
+  meetings: "08 Resources/meetings"
+  knowledge: "08 Resources/knowledge"
+  content_ideas: "08 Resources/knowledge/content-ideas.md"
+  content_drafts: "08 Resources/content-drafts"
+  granola_processed: "08 Resources/granola-processed.md"
+  claude_memory: "08 Resources/claude-memory"
+  voice: "config/voice.md"
   connectors_config: "config/connectors.yaml"
 
 # Daily note settings
