@@ -102,13 +102,48 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| — | — | — |
+| VAULT-01 | Phase 1 | Pending |
+| VAULT-02 | Phase 1 | Pending |
+| VAULT-03 | Phase 1 | Pending |
+| VAULT-04 | Phase 1 | Pending |
+| GTD-01 | Phase 1 | Pending |
+| GTD-02 | Phase 1 | Pending |
+| GTD-03 | Phase 1 | Pending |
+| GTD-04 | Phase 1 | Pending |
+| GTD-05 | Phase 1 | Pending |
+| GTD-06 | Phase 1 | Pending |
+| RITUAL-01 | Phase 1 | Pending |
+| RITUAL-02 | Phase 1 | Pending |
+| RITUAL-03 | Phase 1 | Pending |
+| RITUAL-04 | Phase 1 | Pending |
+| GOAL-01 | Phase 1 | Pending |
+| GOAL-02 | Phase 1 | Pending |
+| GOAL-03 | Phase 1 | Pending |
+| GOAL-04 | Phase 1 | Pending |
+| GOAL-05 | Phase 1 | Pending |
+| SYNC-01 | Phase 2 | Pending |
+| SYNC-02 | Phase 2 | Pending |
+| SYNC-03 | Phase 2 | Pending |
+| SYNC-04 | Phase 2 | Pending |
+| SYNC-05 | Phase 2 | Pending |
+| SYNC-06 | Phase 2 | Pending |
+| CRM-01 | Phase 3 | Pending |
+| CRM-02 | Phase 3 | Pending |
+| CRM-03 | Phase 3 | Pending |
+| CRM-04 | Phase 3 | Pending |
+| CRM-05 | Phase 3 | Pending |
+| CONT-01 | Phase 3 | Pending |
+| CONT-02 | Phase 3 | Pending |
+| CONT-03 | Phase 3 | Pending |
+| CONT-04 | Phase 3 | Pending |
+| CONT-05 | Phase 3 | Pending |
+| CONT-06 | Phase 3 | Pending |
 
 **Coverage:**
-- v1 requirements: 30 total
-- Mapped to phases: 0
-- Unmapped: 30 ⚠️
+- v1 requirements: 36 total
+- Mapped to phases: 36
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-28*
-*Last updated: 2026-03-28 after initial definition*
+*Last updated: 2026-03-28 after roadmap creation*
