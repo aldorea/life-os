@@ -28,7 +28,16 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User can generate a daily note that shows goal-aligned focus, today's agenda, and top 3 next actions — in one command
   4. User can run a weekly review that guides them through retrospective, inbox zero, backlog health, and next week planning as an interactive facilitator
   5. User can define goals with metrics and deadlines, view progress across all dimensions, and run a quarterly reflection workflow
-**Plans**: TBD
+**Plans:** 7 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Vault schema definition + config.example.yaml update
+- [ ] 01-02-PLAN.md — Vault migration skill (/migrate-vault)
+- [ ] 01-03-PLAN.md — Goal tracking system (/goal + /status upgrade)
+- [ ] 01-04-PLAN.md — Capture & processing upgrades (/dump, /capture, /process-inbox)
+- [ ] 01-05-PLAN.md — GTD view skills (/next-actions, /projects, /someday)
+- [ ] 01-06-PLAN.md — Daily rituals (/today upgrade, /morning, /close)
+- [ ] 01-07-PLAN.md — Weekly review + quarterly reflection (/weekly-review, /week upgrade, /quarterly)
 
 ### Phase 2: External Integrations
 **Goal**: External data (Jira, Calendar, meeting notes, Slack, Reminders) flows into the vault automatically without manual entry
@@ -59,6 +68,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. GTD Core | 0/TBD | Not started | - |
+| 1. GTD Core | 0/7 | Planning complete | - |
 | 2. External Integrations | 0/TBD | Not started | - |
 | 3. Compound Intelligence | 0/TBD | Not started | - |
