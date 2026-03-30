@@ -12,16 +12,16 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **VAULT-01**: Vault has a consistent folder structure (PARA-inspired) with documented conventions
 - [x] **VAULT-02**: All note types have standardized frontmatter schemas (tasks, people, meetings, knowledge, goals)
 - [x] **VAULT-03**: Tagging system is defined and documented (contexts, priorities, status, domains)
-- [ ] **VAULT-04**: Existing vault content is migrated to the new structure without data loss
+- [x] **VAULT-04**: Existing vault content is migrated to the new structure without data loss
 
 ### GTD Core
 
-- [ ] **GTD-01**: User can quick-capture thoughts/tasks to inbox in under 5 seconds from CLI
-- [ ] **GTD-02**: User can process inbox items with AI-powered clarification (reformulate, tag, deduplicate)
-- [ ] **GTD-03**: User can view next actions filtered by GTD context (@home, @office, @calls, @computer)
-- [ ] **GTD-04**: User can manage projects list where every project has at least one next action
-- [ ] **GTD-05**: User can maintain a Someday/Maybe list reviewed periodically
-- [ ] **GTD-06**: User can detect stalled projects (no next action or no progress in X days)
+- [x] **GTD-01**: User can quick-capture thoughts/tasks to inbox in under 5 seconds from CLI
+- [x] **GTD-02**: User can process inbox items with AI-powered clarification (reformulate, tag, deduplicate)
+- [x] **GTD-03**: User can view next actions filtered by GTD context (@home, @office, @calls, @computer)
+- [x] **GTD-04**: User can manage projects list where every project has at least one next action
+- [x] **GTD-05**: User can maintain a Someday/Maybe list reviewed periodically
+- [x] **GTD-06**: User can detect stalled projects (no next action or no progress in X days)
 
 ### Daily & Weekly Rituals
 
@@ -32,11 +32,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Goal Tracking
 
-- [ ] **GOAL-01**: User can define goals with measurable metrics, weights, deadlines, and status
-- [ ] **GOAL-02**: User can view goal progress across all dimensions (professional + personal)
+- [x] **GOAL-01**: User can define goals with measurable metrics, weights, deadlines, and status
+- [x] **GOAL-02**: User can view goal progress across all dimensions (professional + personal)
 - [ ] **GOAL-03**: User can run quarterly reflection workflow (retrospective, start/stop/continue)
 - [ ] **GOAL-04**: Daily note shows focus-of-the-day aligned with current goals
-- [ ] **GOAL-05**: User can track goal progress over time (history, not just current state)
+- [x] **GOAL-05**: User can track goal progress over time (history, not just current state)
 
 ### Task Centralization
 
@@ -105,22 +105,22 @@ Which phases cover which requirements. Updated during roadmap creation.
 | VAULT-01 | Phase 1 | Complete |
 | VAULT-02 | Phase 1 | Complete |
 | VAULT-03 | Phase 1 | Complete |
-| VAULT-04 | Phase 1 | Pending |
-| GTD-01 | Phase 1 | Pending |
-| GTD-02 | Phase 1 | Pending |
-| GTD-03 | Phase 1 | Pending |
-| GTD-04 | Phase 1 | Pending |
-| GTD-05 | Phase 1 | Pending |
-| GTD-06 | Phase 1 | Pending |
+| VAULT-04 | Phase 1 | Complete |
+| GTD-01 | Phase 1 | Complete |
+| GTD-02 | Phase 1 | Complete |
+| GTD-03 | Phase 1 | Complete |
+| GTD-04 | Phase 1 | Complete |
+| GTD-05 | Phase 1 | Complete |
+| GTD-06 | Phase 1 | Complete |
 | RITUAL-01 | Phase 1 | Pending |
 | RITUAL-02 | Phase 1 | Pending |
 | RITUAL-03 | Phase 1 | Pending |
 | RITUAL-04 | Phase 1 | Pending |
-| GOAL-01 | Phase 1 | Pending |
-| GOAL-02 | Phase 1 | Pending |
+| GOAL-01 | Phase 1 | Complete |
+| GOAL-02 | Phase 1 | Complete |
 | GOAL-03 | Phase 1 | Pending |
 | GOAL-04 | Phase 1 | Pending |
-| GOAL-05 | Phase 1 | Pending |
+| GOAL-05 | Phase 1 | Complete |
 | SYNC-01 | Phase 2 | Pending |
 | SYNC-02 | Phase 2 | Pending |
 | SYNC-03 | Phase 2 | Pending |
