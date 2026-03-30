@@ -48,7 +48,12 @@ Plans:
   2. User can sync calendar events and Apple Reminders into the vault so the daily note reflects real-world commitments without manual entry
   3. User can sync Granola meeting notes and Slack channel extracts into vault with all synced items flowing through the unified GTD inbox
   4. Each sync connector is independently degradable — a broken Jira sync never blocks daily note generation; stale data is labeled with last-sync timestamp
-**Plans**: TBD
+**Plans:** 3 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Jira sync connector + connectors.example.yaml
+- [ ] 02-02-PLAN.md — Apple Reminders sync connector
+- [ ] 02-03-PLAN.md — Morning orchestrator wiring + unified inbox flow
 
 ### Phase 3: Compound Intelligence
 **Goal**: The system compounds — each meeting makes the next more informed, accumulated knowledge becomes publishable content, and stale relationships surface proactively
@@ -69,5 +74,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. GTD Core | 0/7 | Planning complete | - |
-| 2. External Integrations | 0/TBD | Not started | - |
+| 2. External Integrations | 0/3 | Planning complete | - |
 | 3. Compound Intelligence | 0/TBD | Not started | - |
