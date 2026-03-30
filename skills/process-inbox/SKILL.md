@@ -38,11 +38,23 @@ For each item in the Inbox:
 2. **Detect duplicates** against existing Backlog tasks (fuzzy match on intent)
 3. **Group related items** as subtasks under a parent task
 4. **Suggest tags** for each task:
-   - Context: from `{config.tags.contexts}` (e.g., #work, #personal)
+   - Context: from `{config.tags.contexts}` (GTD contexts):
+     - `#home`: tasks that can only be done at home
+     - `#office`: tasks requiring office/workplace presence
+     - `#calls`: phone calls, video calls to make
+     - `#computer`: tasks doable from any computer/laptop
    - Project: from `{config.tags.projects}`
    - Priority: from `{config.tags.priority}` (only if clearly warranted)
-   - Actionability: from `{config.tags.actionability}` (e.g., #next, #esperando)
-   - Week: `#YYYY-W##` for the current or next week
+   - Actionability: from `{config.tags.actionability}`:
+     - `#next`: actionable now, should be done soon
+     - `#esperando`: waiting on someone else
+     - `#someday`: not actionable now, review periodically
+   - Week: `#YYYY-W##` for current or next week (only for `#next` items)
+5. **Route #someday items:**
+   If an item is not urgent, not actionable now, and the user might want to do it "someday":
+   - Suggest the `#someday` tag
+   - Route to the "Algun dia" section in Backlog (last section in `{config.backlog_sections}`)
+   - Do NOT assign a week tag or priority to #someday items
 
 ### 3. Present plan to user
 
@@ -51,20 +63,40 @@ Before modifying any file, show a table:
 ```
 ## Inbox → Backlog
 
-| # | Item original | Tarea propuesta | Tags | Sección | Nota |
-|---|--------------|-----------------|------|---------|------|
-| 1 | hablar con Pedro | Alinear con [[Pedro]] el scope | #work #next | [section] | |
-| 2 | tema Jira | — | — | — | Duplicado de "Configurar Jira..." |
+| # | Item original | Tarea propuesta | Contexto | Tags | Seccion | Nota |
+|---|--------------|-----------------|----------|------|---------|------|
+| 1 | hablar con Pedro | Alinear con [[Pedro]] el scope | #calls | #work #next | Trabajo -- dia a dia | |
+| 2 | tema Jira | -- | -- | -- | -- | Duplicado de "Configurar Jira..." |
+| 3 | aprender Go | Explorar tutorial oficial de Go | #computer | #someday | Algun dia | No urgente |
 ```
 
 Ask: "¿Aplico estos cambios? Puedes corregir cualquier línea."
 
 ### 4. Apply changes (only after confirmation)
 
+**Before modifying files -- git safety backup:**
+
+```bash
+git -C VAULT add {config.structure.inbox} {config.structure.backlog}
+git -C VAULT commit -m "backup: before process-inbox mutation"
+```
+
+If there are no changes to commit, skip silently.
+
+**Apply changes:**
+
 1. **Add tasks** to `VAULT/{config.structure.backlog}` in the appropriate subsection from `{config.backlog_sections}`
 2. **Remove processed items** from `VAULT/{config.structure.inbox}`
-3. **Skip duplicates** — just remove from Inbox, don't add to Backlog
+3. **Skip duplicates** -- just remove from Inbox, don't add to Backlog
 4. **Add wikilinks** for people, projects, and tickets
+5. **Route #someday items** to the "Algun dia" section (last in `{config.backlog_sections}`)
+
+**After modifications -- git commit:**
+
+```bash
+git -C VAULT add {config.structure.inbox} {config.structure.backlog}
+git -C VAULT commit -m "feat(process-inbox): process X items, Y added to backlog"
+```
 
 ### 5. Summary
 

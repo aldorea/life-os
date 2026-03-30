@@ -44,6 +44,17 @@ The user can pass:
 - If the insight is already captured (same source or same idea) → tell user and skip
 - If related but different angle → proceed, note the connection
 
+### 3b. Git safety backup (before any write)
+
+Before writing to any file, create a git backup:
+
+```bash
+git -C VAULT add {target_file}
+git -C VAULT commit -m "backup: before capture mutation"
+```
+
+If there are no changes to commit, this is fine -- skip silently.
+
 ### 4. Create the entry
 
 Append to the note under `## Entradas`, most recent first:
@@ -62,6 +73,15 @@ Connect with wikilinks: [[personas]], [[proyectos]], [[tickets]], [[other knowle
 - `last_updated` → today
 - `entries` → increment by 1
 - `maturity` → recalculate: seed (<3), growing (3-6), ready (7+)
+
+### 5b. Git commit after write
+
+After successfully writing the entry:
+
+```bash
+git -C VAULT add {target_file}
+git -C VAULT commit -m "feat(capture): add entry to [topic]"
+```
 
 ### 6. Check for content potential
 
