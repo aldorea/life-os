@@ -1,0 +1,39 @@
+# Connectors configuration
+# Copy this file to your vault at config/connectors.yaml and fill in your values.
+# Referenced by config.yaml -> structure.connectors_config
+
+# Slack channels to monitor (used by sync-slack)
+slack:
+  channels:
+    - name: general
+      extract: [decisions, actions]
+    - name: dev-team
+      extract: [actions, questions]
+
+# Jira projects to sync (used by sync-jira)
+# Each entry maps to a configured MCP server in claude.json
+# Adding a new Jira instance = add MCP server + add entry here
+jira:
+  projects:
+    - mcp_server: jira-afianza        # MCP server name (mcp__{mcp_server}__jira_search)
+      project_key: AFNZ               # Jira project key
+      assignee_filter: ""              # Your name as it appears in Jira (for filtering)
+      sync_statuses:                   # Which statuses to sync (only active tickets)
+        - "To Do"
+        - "In Progress"
+        - "In Review"
+    - mcp_server: jira-previene
+      project_key: PREV
+      assignee_filter: ""
+      sync_statuses:
+        - "To Do"
+        - "In Progress"
+        - "In Review"
+
+# Apple Reminders lists to sync (used by sync-reminders)
+reminders:
+  lists:
+    - "Inbox"
+    - "Work"
+    - "Personal"
+  completed: false                     # Only sync incomplete reminders
