@@ -34,10 +34,10 @@ Plans:
 - [x] 01-01-PLAN.md — Vault schema definition + config.example.yaml update
 - [x] 01-02-PLAN.md — Vault migration skill (/migrate-vault)
 - [x] 01-03-PLAN.md — Goal tracking system (/goal + /status upgrade)
-- [ ] 01-04-PLAN.md — Capture & processing upgrades (/dump, /capture, /process-inbox)
+- [x] 01-04-PLAN.md — Capture & processing upgrades (/dump, /capture, /process-inbox)
 - [x] 01-05-PLAN.md — GTD view skills (/next-actions, /projects, /someday)
 - [ ] 01-06-PLAN.md — Daily rituals (/today upgrade, /morning, /close)
-- [ ] 01-07-PLAN.md — Weekly review + quarterly reflection (/weekly-review, /week upgrade, /quarterly)
+- [x] 01-07-PLAN.md — Weekly review + quarterly reflection (/weekly-review, /week upgrade, /quarterly)
 
 ### Phase 2: External Integrations
 **Goal**: External data (Jira, Calendar, meeting notes, Slack, Reminders) flows into the vault automatically without manual entry

@@ -27,14 +27,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **RITUAL-01**: User can generate daily note with agenda, focus, tasks, and goal alignment
 - [ ] **RITUAL-02**: User can run morning GTD ritual (sync sources, clean backlog, process inbox)
-- [ ] **RITUAL-03**: User can run weekly review (retrospective, inbox zero, backlog health, plan next week)
+- [x] **RITUAL-03**: User can run weekly review (retrospective, inbox zero, backlog health, plan next week)
 - [ ] **RITUAL-04**: User can run end-of-day close ritual (reflection, energy check, move completed tasks)
 
 ### Goal Tracking
 
 - [x] **GOAL-01**: User can define goals with measurable metrics, weights, deadlines, and status
 - [x] **GOAL-02**: User can view goal progress across all dimensions (professional + personal)
-- [ ] **GOAL-03**: User can run quarterly reflection workflow (retrospective, start/stop/continue)
+- [x] **GOAL-03**: User can run quarterly reflection workflow (retrospective, start/stop/continue)
 - [ ] **GOAL-04**: Daily note shows focus-of-the-day aligned with current goals
 - [x] **GOAL-05**: User can track goal progress over time (history, not just current state)
 
@@ -114,11 +114,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GTD-06 | Phase 1 | Complete |
 | RITUAL-01 | Phase 1 | Pending |
 | RITUAL-02 | Phase 1 | Pending |
-| RITUAL-03 | Phase 1 | Pending |
+| RITUAL-03 | Phase 1 | Complete |
 | RITUAL-04 | Phase 1 | Pending |
 | GOAL-01 | Phase 1 | Complete |
 | GOAL-02 | Phase 1 | Complete |
-| GOAL-03 | Phase 1 | Pending |
+| GOAL-03 | Phase 1 | Complete |
 | GOAL-04 | Phase 1 | Pending |
 | GOAL-05 | Phase 1 | Complete |
 | SYNC-01 | Phase 2 | Pending |
