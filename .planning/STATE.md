@@ -2,8 +2,8 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Completed 01-06-PLAN.md
+status: Context gathered
+stopped_at: Phase 02 context gathered, ready for planning
 last_updated: "2026-03-30T07:00:04.199Z"
 progress:
   total_phases: 3
@@ -83,11 +83,11 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 2: Quick capture path beyond CLI (Obsidian quick-add, Apple Shortcuts) needs design decision
-- Phase 2: Apple Reminders integration path needs implementation choice (AppleScript vs. Swift CLI)
+- ~~Phase 2: Quick capture path beyond CLI~~ — Resolved: Apple Reminders via AppleScript, read-only
+- ~~Phase 2: Apple Reminders integration path~~ — Resolved: AppleScript via osascript, configurable lists
 
 ## Session Continuity
 
-Last session: 2026-03-29
-Stopped at: Phase 01 complete, ready to plan Phase 02
+Last session: 2026-03-30
+Stopped at: Phase 02 context gathered (02-CONTEXT.md), ready for `/gsd:plan-phase 2`
 Resume file: None
