@@ -12,8 +12,8 @@ Three phases that build on each other. Phase 1 ships a complete GTD loop (vault 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: GTD Core** - Complete daily productivity loop: vault schema, capture, processing, rituals, and goal tracking — zero external dependencies
-- [ ] **Phase 2: External Integrations** - All sync connectors (Jira, Calendar, Granola, Slack, Reminders) flowing into the unified inbox
+- [x] **Phase 1: GTD Core** - Complete daily productivity loop: vault schema, capture, processing, rituals, and goal tracking — zero external dependencies
+- [x] **Phase 2: External Integrations** - All sync connectors (Jira, Calendar, Granola, Slack, Reminders) flowing into the unified inbox
 - [ ] **Phase 3: Compound Intelligence** - CRM and content pipeline features that compound as data accumulates
 
 ## Phase Details
@@ -53,7 +53,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Jira sync connector + connectors.example.yaml
 - [x] 02-02-PLAN.md — Apple Reminders sync connector
-- [ ] 02-03-PLAN.md — Morning orchestrator wiring + unified inbox flow
+- [x] 02-03-PLAN.md — Morning orchestrator wiring + unified inbox flow
 
 ### Phase 3: Compound Intelligence
 **Goal**: The system compounds — each meeting makes the next more informed, accumulated knowledge becomes publishable content, and stale relationships surface proactively
@@ -73,6 +73,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. GTD Core | 0/7 | Planning complete | - |
-| 2. External Integrations | 0/3 | Planning complete | - |
+| 1. GTD Core | 7/7 | Complete | 2026-03-29 |
+| 2. External Integrations | 3/3 | Complete | 2026-03-30 |
 | 3. Compound Intelligence | 0/TBD | Not started | - |
