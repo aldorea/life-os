@@ -52,7 +52,7 @@ Plans:
 
 Plans:
 - [ ] 02-01-PLAN.md — Jira sync connector + connectors.example.yaml
-- [ ] 02-02-PLAN.md — Apple Reminders sync connector
+- [x] 02-02-PLAN.md — Apple Reminders sync connector
 - [ ] 02-03-PLAN.md — Morning orchestrator wiring + unified inbox flow
 
 ### Phase 3: Compound Intelligence

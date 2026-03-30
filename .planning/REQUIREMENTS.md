@@ -41,7 +41,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Task Centralization
 
 - [ ] **SYNC-01**: User can sync Jira tickets to vault with dynamic project configuration (add/remove without code changes)
-- [ ] **SYNC-02**: User can sync Apple Reminders to vault inbox
+- [x] **SYNC-02**: User can sync Apple Reminders to vault inbox
 - [ ] **SYNC-03**: User can sync calendar events to vault for daily/weekly planning
 - [ ] **SYNC-04**: User can sync Slack messages extracting actions and decisions from key channels
 - [ ] **SYNC-05**: User can sync meeting notes from Granola (or any future provider) to vault
@@ -122,7 +122,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GOAL-04 | Phase 1 | Complete |
 | GOAL-05 | Phase 1 | Complete |
 | SYNC-01 | Phase 2 | Pending |
-| SYNC-02 | Phase 2 | Pending |
+| SYNC-02 | Phase 2 | Complete |
 | SYNC-03 | Phase 2 | Pending |
 | SYNC-04 | Phase 2 | Pending |
 | SYNC-05 | Phase 2 | Pending |
