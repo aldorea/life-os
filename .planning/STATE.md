@@ -16,10 +16,10 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-28)
+See: .planning/PROJECT.md (updated 2026-03-29)
 
 **Core value:** A reliable GTD system that captures everything, centralizes all task sources, and ensures nothing falls through the cracks.
-**Current focus:** Phase 01 — gtd-core
+**Current focus:** Phase 02 — external-integrations
 
 ## Current Position
 
@@ -83,13 +83,11 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 1: Quick capture path beyond CLI (Obsidian quick-add, Apple Shortcuts) needs design decision
-- Phase 1: Git commit-before-mutate pattern needs resolution (automated vs. manual rollback)
-- Phase 1: Vault structure freeze decision — restructure minimally now or use as-is and clean up after 4 weeks
+- Phase 2: Quick capture path beyond CLI (Obsidian quick-add, Apple Shortcuts) needs design decision
 - Phase 2: Apple Reminders integration path needs implementation choice (AppleScript vs. Swift CLI)
 
 ## Session Continuity
 
-Last session: 2026-03-30T06:53:54.817Z
-Stopped at: Completed 01-06-PLAN.md
+Last session: 2026-03-29
+Stopped at: Phase 01 complete, ready to plan Phase 02
 Resume file: None
