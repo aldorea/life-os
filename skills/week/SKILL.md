@@ -1,11 +1,11 @@
 ---
 name: week
-description: Use when the user wants to generate or update their weekly note, do weekly planning, or says "week", "semana", "weekly", "planifica semana", "revisión semanal", "qué tengo esta semana".
+description: Use when the user wants to generate or update their weekly note, do weekly planning, or says "week", "semana", "weekly", "planifica semana", "qué tengo esta semana". For an interactive weekly review session, use /weekly-review instead.
 ---
 
 # week
 
-## Step 0 — Load configuration
+## Step 0 -- Load configuration
 
 Read `${CLAUDE_PLUGIN_ROOT}/config.yaml`.
 If it doesn't exist, tell the user to copy `config.example.yaml` to `config.yaml` and fill in their values. Stop here.
@@ -14,7 +14,7 @@ Set `VAULT` = `{config.vault_path}` for all file operations below.
 
 ## Overview
 
-Generator that creates or updates the weekly note in Obsidian. Includes retrospective of the previous week and planning for the current one.
+Generator that creates or updates the weekly note in Obsidian. Includes retrospective of the previous week and planning for the current one. This is a non-interactive generator -- for the interactive GTD weekly review facilitator, use `/weekly-review`.
 
 ## Process
 
@@ -60,7 +60,18 @@ From constraints + calendar cache:
 - Available focus time
 - Days with gym (if tracked)
 
-### 7. Generate or update weekly note
+### 7. Git safety -- pre-mutation backup
+
+Before writing the weekly note:
+
+```
+git -C VAULT add -A
+git -C VAULT commit -m "backup: before week generation"
+```
+
+If commit fails (nothing to commit), continue anyway.
+
+### 8. Generate or update weekly note
 
 File: `VAULT/{config.structure.weekly_notes}/{week}.md`
 
@@ -140,7 +151,16 @@ done before YYYY-MM-DD
 **¿Algo que deba eliminar o delegar?**
 ```
 
-### 8. Present summary
+### 9. Git safety -- post-mutation commit
+
+After the weekly note is written:
+
+```
+git -C VAULT add VAULT/{config.structure.weekly_notes}/{week}.md
+git -C VAULT commit -m "skill(week): generate weekly note YYYY-W##"
+```
+
+### 10. Present summary
 
 ```
 Weekly note generada: {config.structure.weekly_notes}/{week}.md
