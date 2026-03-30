@@ -9,9 +9,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Vault Foundation
 
-- [ ] **VAULT-01**: Vault has a consistent folder structure (PARA-inspired) with documented conventions
-- [ ] **VAULT-02**: All note types have standardized frontmatter schemas (tasks, people, meetings, knowledge, goals)
-- [ ] **VAULT-03**: Tagging system is defined and documented (contexts, priorities, status, domains)
+- [x] **VAULT-01**: Vault has a consistent folder structure (PARA-inspired) with documented conventions
+- [x] **VAULT-02**: All note types have standardized frontmatter schemas (tasks, people, meetings, knowledge, goals)
+- [x] **VAULT-03**: Tagging system is defined and documented (contexts, priorities, status, domains)
 - [ ] **VAULT-04**: Existing vault content is migrated to the new structure without data loss
 
 ### GTD Core
@@ -102,9 +102,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| VAULT-01 | Phase 1 | Pending |
-| VAULT-02 | Phase 1 | Pending |
-| VAULT-03 | Phase 1 | Pending |
+| VAULT-01 | Phase 1 | Complete |
+| VAULT-02 | Phase 1 | Complete |
+| VAULT-03 | Phase 1 | Complete |
 | VAULT-04 | Phase 1 | Pending |
 | GTD-01 | Phase 1 | Pending |
 | GTD-02 | Phase 1 | Pending |

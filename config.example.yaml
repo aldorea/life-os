@@ -9,24 +9,26 @@ structure:
   daily_notes: "03 Daily"
   weekly_notes: "04 Weekly"
   backlog: "01 Backlog.md"
-  inbox: "02 Inbox.md"
-  calendar_cache: "08 Resources/calendar-cache.md"
+  inbox: "00 Inbox.md"
+  calendar_cache: ".cache/calendar-cache.md"
   goals: "config/goals.yaml"
   constraints: "config/constraints.yaml"
   jira_notes: "06 Jira"
-  people: "09 People"
-  projects: "05 Projects"
-  training_log: "10 Health/training-log.md"
-  menus: "10 Health/menus"
+  people: "05 People"
+  projects: "02 Projects"
+  training_log: "09 Health/training-log.md"
+  menus: "09 Health/menus"
   shopping_lists: "11 Nutrition/shopping-lists"
-  meetings: "08 Resources/meetings"
-  knowledge: "08 Resources/knowledge"
-  content_ideas: "08 Resources/knowledge/content-ideas.md"
-  content_drafts: "08 Resources/content-drafts"
-  granola_processed: "08 Resources/granola-processed.md"
-  claude_memory: "08 Resources/claude-memory"
+  meetings: "07 Meetings"
+  knowledge: "08 Knowledge"
+  content_ideas: "08 Knowledge/content-ideas.md"
+  content_drafts: "10 Content"
+  granola_processed: ".cache/granola-processed.md"
+  claude_memory: ".cache/claude-memory"
   voice: "config/voice.md"
   connectors_config: "config/connectors.yaml"
+  archive: "11 Archive"
+  cache: ".cache"
 
 # Daily note settings
 daily:
@@ -70,10 +72,15 @@ shopping:
 
 # Tags (customize to match your system)
 tags:
-  contexts: ["#work", "#personal"]
+  contexts: ["#home", "#office", "#calls", "#computer"]
   projects: ["#miportal", "#sherpa", "#previene", "#orbitant", "#lifeos", "#salud"]
   priority: ["#urgente", "#importante"]
-  actionability: ["#next", "#esperando"]
+  actionability: ["#next", "#esperando", "#someday"]
+  status: ["#active", "#stalled", "#completed", "#archived"]
+
+# Project tracking
+projects:
+  stalled_days: 14
 
 # Backlog sections
 backlog_sections:
