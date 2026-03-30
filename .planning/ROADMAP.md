@@ -51,7 +51,7 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Jira sync connector + connectors.example.yaml
+- [x] 02-01-PLAN.md — Jira sync connector + connectors.example.yaml
 - [x] 02-02-PLAN.md — Apple Reminders sync connector
 - [ ] 02-03-PLAN.md — Morning orchestrator wiring + unified inbox flow
 
