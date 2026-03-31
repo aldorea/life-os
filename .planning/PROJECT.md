@@ -2,81 +2,66 @@
 
 ## What This Is
 
-A personal operating system that centralizes task management, goal tracking, knowledge capture, CRM, and content generation into a unified system. Runs as Claude Code CLI skills + Obsidian vault + web dashboard, built on GTD methodology. Designed for a professional managing multiple projects across different Jira instances who wants one place to think, plan, and execute.
+Un sistema personal de productividad que ayuda a centralizar tareas de múltiples fuentes, planificar la semana, y mantener el foco en los objetivos. Funciona como skills de Claude Code sobre un vault de Obsidian existente.
 
 ## Core Value
 
-A reliable GTD system that captures everything, centralizes all task sources, and ensures nothing falls through the cracks — the foundation everything else builds on.
+Ayudar a Alfonso a decidir qué hacer cada semana, desglosarlo, organizarlo y ejecutarlo — resolviendo la fricción entre "tengo muchas cosas" y "no sé por dónde empezar".
 
 ## Requirements
 
-### Validated
+### Validated (Phase 1-3, archived)
 
-(None yet — ship to validate)
+- [x] Vault schema, GTD capture, processing, daily/weekly rituals, goal tracking (Phase 1)
+- [x] Sync connectors: Jira, Calendar, Granola, Slack, Reminders (Phase 2)
+- [x] Unified sync: /sync centraliza todos los conectores, /morning simplificado (Phase 3)
 
 ### Active
 
-- [ ] Full GTD implementation (inbox, capture, processing, weekly review, contexts, next actions, projects, someday/maybe)
-- [ ] Task centralization from Jira (dynamic projects), Apple Reminders, and Calendar events
-- [ ] Obsidian vault as the single source of truth for all notes and knowledge
-- [ ] Goal setting framework with periodic reflection (quarterly/annual) + active tracking with metrics
-- [ ] Mini CRM: people notes with meeting history, context, follow-ups, and relation to goals
-- [ ] Meeting notes sync (source-agnostic — Granola today, replaceable tomorrow)
-- [ ] Knowledge capture from work sessions into structured vault notes
-- [ ] Content generation pipeline: topic suggestions → drafts → review → scheduling (LinkedIn, blog)
-- [ ] Web dashboard for status overview, goals progress, and task visibility
-- [ ] Vault redesign: reorganize existing daily notes, meeting notes, and knowledge base
+- [x] Sync unificado: un solo comando centraliza Jira (Afianza + Previene), Granola, y calendario en el vault — Validated in Phase 3: Unified Sync
+- [ ] Planificación semanal: cruzar goals + backlog + calendario → plan semanal con prioridades y capacidad
+- [ ] Cierre semanal: retrospectiva, arrastres, reflexión, actualización de goals
+- [ ] Definición de objetivos: facilitar la definición y desglose de goals trimestrales/anuales
 
 ### Out of Scope
 
-- Mobile app — CLI + Obsidian mobile + web dashboard is sufficient
-- Real-time collaboration — this is a personal system
-- Built-in meeting recording/transcription — delegate to specialized tools (Granola, etc.)
-- Social media auto-posting — generate content, publish manually or via separate tool
+- Web dashboard — no aporta valor ahora, el vault es la interfaz
+- CRM / people tracking — futuro, no es el dolor actual
+- Content generation pipeline — futuro
+- Mobile app — Obsidian mobile es suficiente
+- Auto-posting social media
+- Skills especulativas que no resuelven un dolor real
 
 ## Context
 
-- Already has a Claude Code plugin with ~15 skills (morning, capture, dump, review, sync-jira, sync-granola, sync-slack, sync-calendar, content, shop, train, etc.)
-- MCP servers configured: Jira (Afianza + Previene), Slack, Notion, Granola, Calendar
-- Existing Obsidian vault with daily notes, meeting notes, and knowledge base — needs restructuring
-- User follows GTD methodology for personal productivity
-- Jira projects are dynamic — need easy add/remove without code changes
-- User manages multiple professional projects simultaneously
+- Vault de Obsidian en iCloud con estructura funcional: `01 Backlog.md`, `03 Daily/`, `04 Weekly/`, `config/goals.yaml`, `config/connectors.yaml`
+- MCP servers configurados: Jira (Afianza + Previene), Slack, Granola
+- 3 calendarios: Apple Calendar (personal), Gmail (Orbitant), Outlook (Afianza) — bloqueo de tiempo en Outlook
+- Captura en papel → pasa a Obsidian manualmente
+- 26 skills existentes de fases anteriores — la mayoría sin validar por el usuario
+- El usuario ya hace GTD en Obsidian pero le falta: planificación semanal, desglose de tareas, definición de objetivos
 
 ## Constraints
 
-- **Interaction model**: CLI (Claude Code skills) + Obsidian (visualization/navigation) + Web (dashboard)
-- **Vault**: Obsidian-first — all persistent data lives as markdown in the vault
-- **Meeting notes**: Source-agnostic design — abstract away from any specific provider
-- **Jira**: Support dynamic project configuration (not hardcoded instances)
-- **Stack (web)**: To be determined by research — no strong preference
+- **Vault**: Obsidian-first — todo vive como markdown en el vault existente
+- **Skills**: Pocas, validadas, que resuelvan dolor real — no construir especulativamente
+- **Config**: Reutilizar `config/connectors.yaml` y `config/goals.yaml` existentes
+- **Calendarios**: Solo lectura. Bloqueo de tiempo es manual en Outlook.
+- **Jira**: Dos instancias (Afianza vía jira-afianza MCP, Previene vía jira-previene MCP)
 
 ## Key Decisions
 
-| Decision | Rationale | Outcome |
-|----------|-----------|---------|
-| GTD as core methodology | User already follows GTD, natural fit for task organization | — Pending |
-| Obsidian as single source of truth | Markdown-based, local-first, extensible, user already has a vault | — Pending |
-| Source-agnostic meeting sync | Avoid vendor lock-in, user may switch from Granola | — Pending |
-| CLI + Obsidian + Web triple interface | CLI for actions, Obsidian for deep work, Web for quick overview | — Pending |
-| GTD + Tasks as first priority | Foundation that everything else builds on | — Pending |
+| Decision | Rationale | Date |
+|----------|-----------|------|
+| Redefinir proyecto: de 26 skills a 4 core | 26 skills sin validar abrumaron al usuario. Foco en el dolor real: planificar y organizar | 2026-03-31 |
+| Vault existente se mantiene tal cual | La estructura actual (backlog, daily, weekly, goals.yaml) funciona. No hay que migrar nada | 2026-03-31 |
+| No web dashboard en v1 | No aporta valor vs la fricción de planificación semanal | 2026-03-31 |
+| Usage gate: validar cada skill antes de construir la siguiente | Lección aprendida de fases 1-2 donde se construyó sin validar | 2026-03-31 |
 
 ## Evolution
 
-This document evolves at phase transitions and milestone boundaries.
-
-**After each phase transition** (via `/gsd:transition`):
-1. Requirements invalidated? → Move to Out of Scope with reason
-2. Requirements validated? → Move to Validated with phase reference
-3. New requirements emerged? → Add to Active
-4. Decisions to log? → Add to Key Decisions
-5. "What This Is" still accurate? → Update if drifted
-
-**After each milestone** (via `/gsd:complete-milestone`):
-1. Full review of all sections
-2. Core Value check — still the right priority?
-3. Audit Out of Scope — reasons still valid?
-4. Update Context with current state
+- Phase 1-2 artifacts archived in `.planning/phases/01-gtd-core/` and `.planning/phases/02-external-integrations/`
+- Phase 3 (original Compound Intelligence) replaced by focused v1.1 milestone
 
 ---
-*Last updated: 2026-03-29 after Phase 1 (GTD Core) completion — 15 skills delivered, daily productivity loop operational*
+*Last updated: 2026-03-31 — project redefined with user to focus on planning/organizing pain point*
