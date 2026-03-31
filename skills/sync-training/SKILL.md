@@ -1,6 +1,5 @@
 ---
 name: sync-training
-description: Use when importing training data from a fitness app CSV export into the Obsidian vault. Use when user says "sync training", "sincroniza entrenamientos", "importa heavy", "training log", "registro de entrenamiento".
 ---
 
 # sync-training

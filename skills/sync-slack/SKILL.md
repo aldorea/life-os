@@ -1,6 +1,5 @@
 ---
 name: sync-slack
-description: Use when syncing Slack messages to the Obsidian vault, extracting actions and decisions from key channels. Use when user says "sync slack", "sincroniza slack", "qué hay en slack", "revisa slack".
 ---
 
 # sync-slack

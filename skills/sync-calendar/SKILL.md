@@ -1,6 +1,5 @@
 ---
 name: sync-calendar
-description: Use when syncing calendar events to the Obsidian vault, before generating daily or weekly notes, or when the user says "sync calendar", "sincroniza calendario", "actualiza calendario".
 ---
 
 # sync-calendar

@@ -1,6 +1,5 @@
 ---
 name: sync-jira
-description: Syncs Jira tickets from configured projects to the vault as individual markdown notes. Creates inbox items for new assignments and action-requiring status changes. Use when user says "sync jira", "sincroniza jira", "revisa jira", "tickets".
 ---
 
 # sync-jira

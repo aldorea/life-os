@@ -1,6 +1,5 @@
 ---
 name: sync-reminders
-description: Syncs Apple Reminders from configured lists into the vault inbox for GTD processing. Read-only -- pulls reminders captured via Siri, Watch, or Phone. Use when user says "sync reminders", "sincroniza recordatorios", "revisa recordatorios", "reminders".
 ---
 
 # sync-reminders

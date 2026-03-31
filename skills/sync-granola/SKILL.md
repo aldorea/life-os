@@ -1,6 +1,5 @@
 ---
 name: sync-granola
-description: Syncs Granola meetings to the vault. Enriches People notes with meeting summaries and extracts action items to the Backlog. Runs automatically in SessionStart. Use when user says "sync granola", "sincroniza granola", "reuniones granola", or during SessionStart hook.
 ---
 
 # sync-granola
