@@ -40,7 +40,7 @@ Redefined 2026-03-31. Phases 1-2 delivered GTD core + sync connectors (26 skills
 **Plans:** 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Create /sync orchestrator skill + make sync-* skills internal
+- [x] 03-01-PLAN.md — Create /sync orchestrator skill + make sync-* skills internal
 - [ ] 03-02-PLAN.md — Simplify /morning to delegate sync to /sync
 
 ### Phase 4: Weekly Planning
