@@ -2,77 +2,94 @@
 
 ## Overview
 
-Three phases that build on each other. Phase 1 ships a complete GTD loop (vault schema + daily rituals + goal tracking) that works with zero external dependencies. Phase 2 connects external sources (Jira, Calendar, Granola, Slack, Reminders) so the vault populates itself. Phase 3 unlocks compound intelligence that only becomes meaningful once data has been accumulating — meeting prep briefs, content generation, and CRM follow-up loops. Each phase is gated by daily use of the prior phase before proceeding.
+Redefined 2026-03-31. Phases 1-2 delivered GTD core + sync connectors (26 skills, not fully validated). The project pivots to focus on the user's real pain: planning what to do, breaking it down, and staying on track. Four new phases, each small and validated before moving to the next.
 
 ## Phases
 
-**Phase Numbering:**
-- Integer phases (1, 2, 3): Planned milestone work
-- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+**Completed (v1.0):**
+- [x] **Phase 1: GTD Core** — Vault schema, capture, processing, rituals, goal tracking (7 plans)
+- [x] **Phase 2: External Integrations** — Jira, Calendar, Granola, Slack, Reminders sync (3 plans)
 
-Decimal phases appear between their surrounding integers in numeric order.
-
-- [x] **Phase 1: GTD Core** - Complete daily productivity loop: vault schema, capture, processing, rituals, and goal tracking — zero external dependencies
-- [x] **Phase 2: External Integrations** - All sync connectors (Jira, Calendar, Granola, Slack, Reminders) flowing into the unified inbox
-- [ ] **Phase 3: Compound Intelligence** - CRM and content pipeline features that compound as data accumulates
+**Active (v1.1):**
+- [ ] **Phase 3: Unified Sync** — Single `/sync` command replacing 5 separate sync skills
+- [ ] **Phase 4: Weekly Planning** — `/plan-week` to decide what to do each week
+- [ ] **Phase 5: Weekly Review** — `/review` to close the week and adjust
+- [ ] **Phase 6: Goal Definition** — `/define-goals` to set and break down objectives
 
 ## Phase Details
 
 ### Phase 1: GTD Core
-**Goal**: User has a complete, reliable daily productivity loop that works with zero external dependencies
-**Depends on**: Nothing (first phase)
-**Requirements**: VAULT-01, VAULT-02, VAULT-03, VAULT-04, GTD-01, GTD-02, GTD-03, GTD-04, GTD-05, GTD-06, RITUAL-01, RITUAL-02, RITUAL-03, RITUAL-04, GOAL-01, GOAL-02, GOAL-03, GOAL-04, GOAL-05
-**Success Criteria** (what must be TRUE):
-  1. User can capture a thought to inbox in under 5 seconds from the CLI with no friction (no form, no classification)
-  2. User can process inbox items with AI-powered clarification that assigns GTD context tags, deduplicates, and routes to next actions, projects, or someday/maybe
-  3. User can generate a daily note that shows goal-aligned focus, today's agenda, and top 3 next actions — in one command
-  4. User can run a weekly review that guides them through retrospective, inbox zero, backlog health, and next week planning as an interactive facilitator
-  5. User can define goals with metrics and deadlines, view progress across all dimensions, and run a quarterly reflection workflow
-**Plans:** 7 plans
-
-Plans:
-- [x] 01-01-PLAN.md — Vault schema definition + config.example.yaml update
-- [x] 01-02-PLAN.md — Vault migration skill (/migrate-vault)
-- [x] 01-03-PLAN.md — Goal tracking system (/goal + /status upgrade)
-- [x] 01-04-PLAN.md — Capture & processing upgrades (/dump, /capture, /process-inbox)
-- [x] 01-05-PLAN.md — GTD view skills (/next-actions, /projects, /someday)
-- [ ] 01-06-PLAN.md — Daily rituals (/today upgrade, /morning, /close)
-- [x] 01-07-PLAN.md — Weekly review + quarterly reflection (/weekly-review, /week upgrade, /quarterly)
+**Goal**: Complete daily productivity loop with zero external dependencies
+**Status**: Complete (2026-03-29)
+**Plans:** 7/7 complete
 
 ### Phase 2: External Integrations
-**Goal**: External data (Jira, Calendar, meeting notes, Slack, Reminders) flows into the vault automatically without manual entry
-**Depends on**: Phase 1
-**Requirements**: SYNC-01, SYNC-02, SYNC-03, SYNC-04, SYNC-05, SYNC-06
-**Success Criteria** (what must be TRUE):
-  1. User can sync Jira tickets from multiple configured projects into vault with a single command — adding or removing projects requires only a config file change, no code change
-  2. User can sync calendar events and Apple Reminders into the vault so the daily note reflects real-world commitments without manual entry
-  3. User can sync Granola meeting notes and Slack channel extracts into vault with all synced items flowing through the unified GTD inbox
-  4. Each sync connector is independently degradable — a broken Jira sync never blocks daily note generation; stale data is labeled with last-sync timestamp
-**Plans:** 3 plans
+**Goal**: External data flows into vault automatically
+**Status**: Complete (2026-03-30)
+**Plans:** 3/3 complete
+
+### Phase 3: Unified Sync
+**Goal**: Un solo comando `/sync` que centraliza Jira (Afianza + Previene), Granola, y calendario en el vault — reemplazando los 5 sync individuales
+**Depends on**: Phase 2 (sync connectors exist)
+**Requirements**: USYNC-01, USYNC-02, USYNC-03
+**Success Criteria**:
+  1. `/sync` ejecuta todos los conectores configurados en `connectors.yaml` y reporta qué se sincronizó
+  2. Si un conector falla, los demás continúan y el usuario ve qué falló
+  3. El usuario valida que lo usa diariamente durante 1 semana antes de pasar a Phase 4
+**UI hint**: no
+**Plans:** 2 plans
 
 Plans:
-- [x] 02-01-PLAN.md — Jira sync connector + connectors.example.yaml
-- [x] 02-02-PLAN.md — Apple Reminders sync connector
-- [x] 02-03-PLAN.md — Morning orchestrator wiring + unified inbox flow
+- [ ] 03-01-PLAN.md — Create /sync orchestrator skill + make sync-* skills internal
+- [ ] 03-02-PLAN.md — Simplify /morning to delegate sync to /sync
 
-### Phase 3: Compound Intelligence
-**Goal**: The system compounds — each meeting makes the next more informed, accumulated knowledge becomes publishable content, and stale relationships surface proactively
-**Depends on**: Phase 2
-**Requirements**: CRM-01, CRM-02, CRM-03, CRM-04, CRM-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06
-**Success Criteria** (what must be TRUE):
-  1. User can get a pre-meeting briefing that aggregates person context, past meeting history, pending action items, and related Jira tickets into a single note
-  2. User can capture knowledge from work sessions into structured vault notes with maturity tracking (raw → developing → ready), and get topic suggestions when notes reach "ready" state
-  3. User can generate a LinkedIn post or blog article draft from a mature knowledge note in one command, then review and iterate before publishing
-  4. User can see stale contacts (no interaction beyond threshold) surfaced proactively with follow-up suggestions
+### Phase 4: Weekly Planning
+**Goal**: El usuario puede planificar su semana en una conversación guiada con Claude — cruzando goals, backlog, y calendario
+**Depends on**: Phase 3 (sync must work so backlog is current)
+**Requirements**: PLAN-01, PLAN-02, PLAN-03, PLAN-04, PLAN-05
+**Success Criteria**:
+  1. `/plan-week` lee backlog + goals + calendario y propone un plan semanal
+  2. El usuario ajusta interactivamente y genera la weekly note
+  3. Las tareas arrastradas de semanas anteriores se surfacean automáticamente
+  4. El usuario valida que lo usa 2 lunes consecutivos antes de pasar a Phase 5
+**UI hint**: no
+**Plans**: TBD
+
+### Phase 5: Weekly Review
+**Goal**: El usuario cierra la semana con una retrospectiva guiada que actualiza goals y detecta estancamientos
+**Depends on**: Phase 4 (weekly planning creates the data to review)
+**Requirements**: REV-01, REV-02, REV-03
+**Success Criteria**:
+  1. `/review` guía retrospectiva: completadas, arrastres, reflexión
+  2. Goals se actualizan si hubo progreso
+  3. Tareas estancadas (>2 semanas) se surfacean
+  4. El usuario valida que lo usa 2 viernes consecutivos antes de pasar a Phase 6
+**UI hint**: no
+**Plans**: TBD
+
+### Phase 6: Goal Definition
+**Goal**: El usuario puede definir y desglosar objetivos trimestrales con ayuda de Claude — pasando de "quiero hacer X" a hitos concretos con fechas
+**Depends on**: Phase 5 (review reveals which goals need definition)
+**Requirements**: GDEF-01, GDEF-02, GDEF-03, GDEF-04
+**Success Criteria**:
+  1. `/define-goals` facilita definición mediante conversación guiada
+  2. Objetivos abstractos se desglosan en hitos con fechas
+  3. goals.yaml se actualiza con el resultado
+  4. Claude valida coherencia (demasiados goals, fechas irrealistas, conflictos)
+**UI hint**: no
 **Plans**: TBD
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3
+Phases execute in numeric order: 3 -> 4 -> 5 -> 6
+Each phase gated by user validation before proceeding.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. GTD Core | 7/7 | Complete | 2026-03-29 |
 | 2. External Integrations | 3/3 | Complete | 2026-03-30 |
-| 3. Compound Intelligence | 0/TBD | Not started | - |
+| 3. Unified Sync | 0/2 | Planning complete | - |
+| 4. Weekly Planning | 0/TBD | Not started | - |
+| 5. Weekly Review | 0/TBD | Not started | - |
+| 6. Goal Definition | 0/TBD | Not started | - |
