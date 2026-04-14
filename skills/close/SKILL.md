@@ -18,6 +18,12 @@ End-of-day ritual that guides the user through reflection, energy check, and tas
 
 ## Process
 
+### 0.5. Sync Telegram captures
+
+Run the `sync-telegram` skill to fetch any unprocessed messages from the Telegram bot before starting the close ritual. This ensures training logs and inbox items captured during the day are in the vault before reflection.
+
+If sync-telegram fails or is unreachable, continue with the close ritual — don't block on it.
+
 ### 1. Read today's daily note
 
 Find today's daily note at `VAULT/{config.structure.daily_notes}/{date}.md` (using `{config.daily.date_format}`).
