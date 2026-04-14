@@ -5,13 +5,6 @@ description: Use when the user wants to generate content (LinkedIn posts, blog a
 
 # content
 
-## Step 0 — Load configuration
-
-Read `${CLAUDE_PLUGIN_ROOT}/config.yaml`.
-If it doesn't exist, tell the user to copy `config.example.yaml` to `config.yaml` and fill in their values. Stop here.
-
-Set `VAULT` = `{config.vault_path}` for all file operations below.
-
 ## Overview
 
 Generates content drafts (LinkedIn posts, blog articles, talk outlines) from the knowledge base. Three modes of operation.
@@ -26,10 +19,10 @@ Generates content drafts (LinkedIn posts, blog articles, talk outlines) from the
 
 ### Process
 
-1. Read the topic note from `VAULT/{config.structure.knowledge}/[topic].md`
-2. Read `VAULT/{config.structure.content_ideas}` for existing ideas about this topic
-3. Read `VAULT/{config.structure.voice}` if it exists (writing style guide)
-4. Read `VAULT/{config.structure.goals}` to align with current content goals
+1. Read the topic note from `08 Resources/knowledge/[topic].md`
+2. Read `08 Resources/knowledge/content-ideas.md` for existing ideas about this topic
+3. Read `config/voice.md` if it exists (writing style guide)
+4. Read `config/goals.yaml` to align with current content goals
 5. Generate draft adapted to format:
 
 **LinkedIn post:**
@@ -56,7 +49,7 @@ Generates content drafts (LinkedIn posts, blog articles, talk outlines) from the
 - Speaker notes per section
 
 6. Present draft conversationally for iteration
-7. If user approves, save with `--save` to `VAULT/{config.structure.content_drafts}/YYYY-MM-DD-slug.md`
+7. If user approves, save with `--save` to `08 Resources/content-drafts/YYYY-MM-DD-slug.md`
 
 ## Mode 2: Explore what's available
 
@@ -88,7 +81,7 @@ No arguments → scan all knowledge notes and present:
 
 1. Search ALL knowledge notes for relevant entries (keyword + semantic match)
 2. Aggregate related entries across topics
-3. Cross-reference with meeting notes in `VAULT/{config.structure.meetings}/` if relevant
+3. Cross-reference with meeting notes in `08 Resources/meetings/` if relevant
 4. Generate draft combining sources
 5. Cite which knowledge entries were used
 
@@ -96,7 +89,7 @@ No arguments → scan all knowledge notes and present:
 
 - Output is ALWAYS conversational (shown in chat, not saved) unless `--save` flag
 - Iterate with user: "¿Cambio algo? ¿Más técnico? ¿Más personal?"
-- When saving, use `VAULT/{config.structure.content_drafts}/YYYY-MM-DD-slug.md` with frontmatter:
+- When saving, use `08 Resources/content-drafts/YYYY-MM-DD-slug.md` with frontmatter:
 
 ```yaml
 ---
@@ -126,3 +119,6 @@ sources: [list of knowledge notes used]
 | No content-ideas.md | Skip ideas section, generate from knowledge entries directly |
 | No goals.yaml | Skip alignment section |
 
+## Vault Path
+
+`/Users/alfonso/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault`

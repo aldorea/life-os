@@ -5,13 +5,6 @@ description: Use when capturing knowledge, interesting links, ideas, or learning
 
 # capture
 
-## Step 0 — Load configuration
-
-Read `${CLAUDE_PLUGIN_ROOT}/config.yaml`.
-If it doesn't exist, tell the user to copy `config.example.yaml` to `config.yaml` and fill in their values. Stop here.
-
-Set `VAULT` = `{config.vault_path}` for all file operations below.
-
 ## Overview
 
 Captures knowledge inputs (articles, ideas, experiences, tools, learnings) into thematic notes in the knowledge base. Classifies, deduplicates, and connects with wikilinks.
@@ -34,7 +27,7 @@ The user can pass:
 
 ### 2. Identify the topic
 
-- Check existing notes in `VAULT/{config.structure.knowledge}/` for matching topic
+- Check existing notes in `08 Resources/knowledge/` for matching topic
 - If match found → will append to existing note
 - If no match → propose a new topic name and ask user to confirm
 
@@ -43,17 +36,6 @@ The user can pass:
 - Read the target note's existing entries
 - If the insight is already captured (same source or same idea) → tell user and skip
 - If related but different angle → proceed, note the connection
-
-### 3b. Git safety backup (before any write)
-
-Before writing to any file, create a git backup:
-
-```bash
-git -C VAULT add {target_file}
-git -C VAULT commit -m "backup: before capture mutation"
-```
-
-If there are no changes to commit, this is fine -- skip silently.
 
 ### 4. Create the entry
 
@@ -74,20 +56,11 @@ Connect with wikilinks: [[personas]], [[proyectos]], [[tickets]], [[other knowle
 - `entries` → increment by 1
 - `maturity` → recalculate: seed (<3), growing (3-6), ready (7+)
 
-### 5b. Git commit after write
-
-After successfully writing the entry:
-
-```bash
-git -C VAULT add {target_file}
-git -C VAULT commit -m "feat(capture): add entry to [topic]"
-```
-
 ### 6. Check for content potential
 
 If the entry suggests publishable content:
 - Add idea to the `## Ideas para contenido` section of the same note
-- Also add to `VAULT/{config.structure.content_ideas}` with link to the knowledge note
+- Also add to `08 Resources/knowledge/content-ideas.md` with link to the knowledge note
 
 ### 7. Notify maturity changes
 
@@ -129,3 +102,6 @@ maturity: seed
 - If source is a URL, include it for future reference
 - Spanish language for all content
 
+## Vault Path
+
+`/Users/alfonso/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault`
