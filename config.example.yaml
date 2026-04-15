@@ -52,6 +52,21 @@ calendar:
 communication:
   tool: slack                     # slack | teams | none
 
+# Telegram training bot (optional)
+# The api_key lives in ~/.config/life-os/secrets.yaml (see below), never here.
+# telegram:
+#   api_url: "https://your-bot.fly.dev"
+
+# ─────────────────────────────────────────────────────────────────────
+# Secrets (API keys, tokens) must NOT be stored in this file.
+# Instead, create ~/.config/life-os/secrets.yaml with permissions 600.
+# Structure mirrors this config — values there override/complement it.
+# Example:
+#   ~/.config/life-os/secrets.yaml
+#     telegram:
+#       api_key: "<your-api-key>"
+# ─────────────────────────────────────────────────────────────────────
+
 # Training
 training:
   import_source: heavy-csv        # heavy-csv | strong-csv | none
