@@ -12,6 +12,14 @@ If it doesn't exist, tell the user to copy `config.example.yaml` to `config.yaml
 
 Set `VAULT` = `{config.vault_path}` for all file operations below.
 
+### Load secrets
+
+If `~/.config/life-os/secrets.yaml` exists, also read it and merge its values into the config tree. Secrets values take precedence over any matching key in `config.yaml`. For example, `secrets.telegram.api_key` becomes `config.telegram.api_key`.
+
+The secrets file must have permissions `600` (user read/write only). If it exists but is world/group-readable, warn the user but continue.
+
+If `config.telegram.api_key` is not defined after merging, warn the user that the Telegram API key is missing and stop gracefully. The key can be added to `~/.config/life-os/secrets.yaml` under `telegram.api_key`.
+
 ## Overview
 
 Connector that fetches unprocessed messages from the Telegram Training Bot API and writes them to the vault. Training messages go to the training log; everything else goes to Inbox.
