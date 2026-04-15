@@ -1,0 +1,14 @@
+{
+  "name": "life-os",
+  "owner": {
+    "name": "aldorea",
+    "url": "https://github.com/aldorea"
+  },
+  "plugins": [
+    {
+      "name": "life-os",
+      "source": "./",
+      "description": "Personal productivity system for Obsidian: daily and weekly notes, goal tracking, meeting prep, inbox processing, training logs, and calendar sync."
+    }
+  ]
+}
