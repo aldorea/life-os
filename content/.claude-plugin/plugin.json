@@ -1,0 +1,12 @@
+{
+  "name": "content",
+  "description": "Content generation and nutrition: LinkedIn posts, blog drafts, and weekly shopping lists.",
+  "version": "0.1.0",
+  "author": {
+    "name": "aldorea",
+    "url": "https://github.com/aldorea"
+  },
+  "repository": "https://github.com/aldorea/life-os",
+  "license": "MIT",
+  "keywords": ["content", "linkedin", "shopping", "obsidian"]
+}

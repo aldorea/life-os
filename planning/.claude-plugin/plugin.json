@@ -1,0 +1,12 @@
+{
+  "name": "planning",
+  "description": "Planning tools: meeting prep, system status dashboard, backlog review, weekly review.",
+  "version": "0.1.0",
+  "author": {
+    "name": "aldorea",
+    "url": "https://github.com/aldorea"
+  },
+  "repository": "https://github.com/aldorea/life-os",
+  "license": "MIT",
+  "keywords": ["gtd", "planning", "review", "obsidian", "productivity"]
+}

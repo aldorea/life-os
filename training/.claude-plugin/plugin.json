@@ -1,0 +1,12 @@
+{
+  "name": "training",
+  "description": "Training tracking and CSV import: query training history, personal records, and sync from Heavy/Strong.",
+  "version": "0.1.0",
+  "author": {
+    "name": "aldorea",
+    "url": "https://github.com/aldorea"
+  },
+  "repository": "https://github.com/aldorea/life-os",
+  "license": "MIT",
+  "keywords": ["training", "fitness", "obsidian", "health"]
+}

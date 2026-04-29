@@ -1,0 +1,12 @@
+{
+  "name": "sync",
+  "description": "Sync connectors: calendar, Granola, Jira, Slack, and Telegram into the Obsidian vault.",
+  "version": "0.1.0",
+  "author": {
+    "name": "aldorea",
+    "url": "https://github.com/aldorea"
+  },
+  "repository": "https://github.com/aldorea/life-os",
+  "license": "MIT",
+  "keywords": ["sync", "calendar", "jira", "slack", "telegram", "obsidian"]
+}
