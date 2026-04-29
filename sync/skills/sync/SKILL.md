@@ -7,7 +7,7 @@ description: Run all enabled connectors (calendar, granola, slack, jira, trainin
 
 ## Step 0 -- Load configuration
 
-Read `${CLAUDE_PLUGIN_ROOT}/config.yaml`.
+Read `~/.config/life-os/config.yaml`.
 If it doesn't exist, tell the user to copy `config.example.yaml` to `config.yaml` and fill in their values. Stop here.
 
 Set `VAULT` = `{config.vault_path}` for all file operations below.
