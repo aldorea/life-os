@@ -1,5 +1,6 @@
 # life-os configuration
-# Copy this file to config.yaml and fill in your values.
+# Copy this file to ~/.config/life-os/config.yaml and fill in your values.
+# Create the directory first: mkdir -p ~/.config/life-os
 
 # Path to your Obsidian vault (absolute path)
 vault_path: ""                    # e.g. /Users/me/Obsidian Vault

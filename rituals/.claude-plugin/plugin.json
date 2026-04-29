@@ -1,0 +1,12 @@
+{
+  "name": "rituals",
+  "description": "Daily and weekly rituals: morning routine, daily note, end-of-day close, and weekly review.",
+  "version": "0.1.0",
+  "author": {
+    "name": "aldorea",
+    "url": "https://github.com/aldorea"
+  },
+  "repository": "https://github.com/aldorea/life-os",
+  "license": "MIT",
+  "keywords": ["gtd", "daily-notes", "rituals", "obsidian", "productivity"]
+}

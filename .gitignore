@@ -2,3 +2,4 @@ config.yaml
 .DS_Store
 .serena/
 .planning/reports/
+.worktrees/

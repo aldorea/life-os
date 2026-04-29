@@ -6,9 +6,40 @@
   },
   "plugins": [
     {
-      "name": "life-os",
-      "source": "./",
-      "description": "Personal productivity system for Obsidian: daily and weekly notes, goal tracking, meeting prep, inbox processing, training logs, and calendar sync."
+      "name": "rituals",
+      "source": "./rituals",
+      "version": "0.1.0",
+      "description": "Daily and weekly rituals: morning routine, daily note, end-of-day close, and weekly review."
+    },
+    {
+      "name": "sync",
+      "source": "./sync",
+      "version": "0.1.0",
+      "description": "Sync connectors: calendar, Granola, Jira, Slack, and Telegram into the Obsidian vault."
+    },
+    {
+      "name": "capture",
+      "source": "./capture",
+      "version": "0.1.0",
+      "description": "Capture and inbox processing: quick dump, capture knowledge, process inbox, clarify tasks."
+    },
+    {
+      "name": "planning",
+      "source": "./planning",
+      "version": "0.1.0",
+      "description": "Planning tools: meeting prep, system status dashboard, backlog review, weekly review."
+    },
+    {
+      "name": "training",
+      "source": "./training",
+      "version": "0.1.0",
+      "description": "Training tracking and CSV import: query training history, personal records, and sync from Heavy/Strong."
+    },
+    {
+      "name": "content",
+      "source": "./content",
+      "version": "0.1.0",
+      "description": "Content generation and nutrition: LinkedIn posts, blog drafts, and weekly shopping lists."
     }
   ]
 }
