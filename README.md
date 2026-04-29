@@ -4,15 +4,24 @@ Personal productivity plugin for Claude Code. Manages your Obsidian vault: daily
 
 ## Installation
 
+Add the marketplace, then install the plugins you need:
+
 ```bash
-/plugin install github:aldorea/life-os
+/plugin marketplace add github:aldorea/life-os
+/plugin install rituals@life-os
+/plugin install sync@life-os
+/plugin install capture@life-os
+/plugin install planning@life-os
+/plugin install training@life-os   # optional
+/plugin install content@life-os    # optional
 ```
 
 ## Configuration
 
 ```bash
-cp config.example.yaml config.yaml
-# Edit config.yaml with your vault path and preferences
+mkdir -p ~/.config/life-os
+cp config.example.yaml ~/.config/life-os/config.yaml
+# Edit ~/.config/life-os/config.yaml with your vault path and preferences
 ```
 
 ## Skills
