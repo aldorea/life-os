@@ -16,6 +16,16 @@ Set `VAULT` = `{config.vault_path}` for all file operations below.
 
 End-of-day ritual that guides the user through reflection, energy check, and task completion logging. Updates the daily note's "Cierre del dia" section and handles pending task decisions.
 
+## Vault I/O
+
+Use `obsidian` CLI for vault operations:
+- Read daily note: `obsidian daily:read`
+- List completed tasks: `obsidian tasks done`
+- List pending #next tasks: `obsidian tasks todo path="{config.structure.backlog}"`
+- Append cierre section: `obsidian daily:append content="## Cierre del dia\n\n**Que salio bien?**\n{response}\n\n**Que haria diferente?**\n{response}\n\n**Energia:** {value}"`
+- Toggle task done: `obsidian task toggle path="{config.structure.backlog}" line=N done`
+- Read backlog: `obsidian read path="{config.structure.backlog}"`
+
 ## Process
 
 ### 0.5. Sync Telegram captures
@@ -26,13 +36,13 @@ If sync-telegram fails or is unreachable, continue with the close ritual — don
 
 ### 1. Read today's daily note
 
-Find today's daily note at `VAULT/{config.structure.daily_notes}/{date}.md` (using `{config.daily.date_format}`).
+Use `obsidian daily:read` to read today's daily note.
 
 If it doesn't exist: "No hay daily note para hoy. Quieres generarla primero? (/today)". Wait for response — if yes, run the today skill logic first; if no, proceed with reflection only (skip steps 2-3, go to step 4).
 
 ### 2. Read completed tasks
 
-Read `VAULT/{config.structure.backlog}`. Find tasks marked as done today `- [x]` (Obsidian Tasks marks done date).
+Use `obsidian tasks done` to list tasks completed today.
 Also check today's daily note "Completadas hoy" section (rendered by Tasks plugin query).
 
 Collect all tasks completed today into a list.
@@ -112,7 +122,7 @@ Where:
 
 ### 7. Update daily note
 
-Write to the "Cierre del dia" section of today's daily note:
+Use `obsidian daily:append` to write to today's daily note's "Cierre del dia" section:
 
 ```markdown
 ## Cierre del dia

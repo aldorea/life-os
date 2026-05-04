@@ -15,6 +15,14 @@ Set `VAULT` = `{config.vault_path}` for all file operations below.
 
 Connector that syncs Jira tickets from multiple configured projects via MCP servers into individual vault notes in `VAULT/{config.structure.jira_notes}/`. Each Jira project maps to a configured MCP server (per D-01). Creates inbox items only for new assignments or action-requiring status changes (per D-05). Re-sync overwrites all frontmatter and body -- Jira is source of truth (per D-04).
 
+## Vault I/O
+
+Use `obsidian` CLI for vault writes:
+- Write/overwrite ticket note: `obsidian create path="{config.structure.jira_notes}/{ticket.key}.md" content="..." overwrite`
+- Update single property: `obsidian property:set name=last_sync value="{timestamp}" path="{config.structure.jira_notes}/{ticket.key}.md"`
+- Append inbox item: `obsidian append path="{config.structure.inbox}" content="- Jira [[{key}]] -- {message} ({date})"`
+- Check inbox for duplicate: `obsidian read path="{config.structure.inbox}"` then grep for `[[{ticket.key}]]`
+
 ## Prerequisites
 
 - At least one Jira MCP server must be available (e.g. `mcp__jira-afianza__jira_search`)
@@ -52,7 +60,7 @@ For each project entry in `jira.projects`:
 
 Ensure `VAULT/{config.structure.jira_notes}/` directory exists. If not, create it.
 
-For each fetched ticket, write to `VAULT/{config.structure.jira_notes}/{ticket.key}.md`:
+Write ticket notes using `obsidian create path="{config.structure.jira_notes}/{ticket.key}.md" content="..." overwrite` for each fetched ticket.
 
 **Frontmatter (per D-03):**
 
@@ -106,9 +114,9 @@ Compare current ticket data against existing note frontmatter (if note existed b
 
 For each inbox-worthy ticket:
 
-1. **Read** `VAULT/{config.structure.inbox}`
+1. **Read** `VAULT/{config.structure.inbox}` using `obsidian read path="{config.structure.inbox}"`
 2. **Dedup check (D-11):** search for `[[{ticket.key}]]` in inbox content. If already present, skip (do not duplicate).
-3. If NOT already in inbox, **append** the appropriate format:
+3. If NOT already in inbox, append using `obsidian append` the appropriate format:
 
 **New assignment:**
 ```markdown

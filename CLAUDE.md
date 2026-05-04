@@ -162,6 +162,23 @@ Do not make direct repo edits outside a GSD workflow unless the user explicitly 
 
 
 
+## Vault I/O
+
+Use the `obsidian` CLI for vault file operations — it routes through Obsidian's API (handles sync, plugins, wikilinks correctly).
+
+| Operación | Comando |
+|-----------|---------|
+| Leer archivo | `obsidian read path="03 Daily/04-05-2026.md"` |
+| Crear / sobreescribir | `obsidian create path="..." content="..." overwrite` |
+| Append | `obsidian append path="02 Inbox.md" content="..."` |
+| Propiedad | `obsidian property:set name=status value=done path="..."` |
+| Daily (leer) | `obsidian daily:read` |
+| Daily (append) | `obsidian daily:append content="..."` |
+| Listar tareas | `obsidian tasks todo path="01 Backlog.md"` |
+| Toggle tarea | `obsidian task toggle path="..." line=N` |
+
+Paths relative to vault root. Quote paths with spaces. Use `\n` for newlines in `content`. For large multi-line templates (full daily note, full Jira ticket), Write tool is acceptable — use CLI for reads, appends, and property updates.
+
 <!-- GSD:profile-start -->
 ## Developer Profile
 

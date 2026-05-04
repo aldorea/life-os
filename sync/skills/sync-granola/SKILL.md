@@ -14,6 +14,14 @@ Set `VAULT` = `{config.vault_path}` for all file operations below.
 ## Overview
 
 Connector that syncs Granola meeting data into the vault. Two outputs:
+
+## Vault I/O
+
+Use `obsidian` CLI for vault writes:
+- Write meeting note: `obsidian create path="..." content="..." overwrite`
+- Append task to backlog: `obsidian append path="{config.structure.backlog}" content="- [ ] {task} #work"`
+- Append to inbox: `obsidian append path="{config.structure.inbox}" content="- {item}"`
+- Mark processed: `obsidian property:set name=processed value=true path="08 Resources/granola-processed.md"`
 1. **Meeting notes** — individual meeting notes in `VAULT/{config.structure.meetings}/`
 2. **People enrichment** — attendee People notes created/updated with `last_interaction`
 3. **Backlog tasks** — action items extracted to `VAULT/{config.structure.backlog}`

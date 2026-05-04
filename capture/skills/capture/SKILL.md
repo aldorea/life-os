@@ -17,6 +17,16 @@ The user can pass:
 - A free-form observation: `/capture me ha gustado cómo Felipe usa obsidian como CRM`
 - A tool/resource: `/capture herramienta: Whisper Flow para escribir por voz`
 
+## Vault I/O
+
+Use `obsidian` CLI for vault operations:
+- Read knowledge note: `obsidian read path="08 Resources/knowledge/{topic}.md"`
+- Append entry: `obsidian append path="08 Resources/knowledge/{topic}.md" content="### [{date}] {title}\n**Tipo:** {type}\n**Fuente:** {source}\n\n{content}"`
+- Update property: `obsidian property:set name=last_updated value="{date}" path="..."`
+- Update maturity: `obsidian property:set name=maturity value="{seed|growing|ready}" path="..."`
+- Update entries count: `obsidian property:set name=entries value=N path="..."`
+- Create new topic: `obsidian create path="08 Resources/knowledge/{topic}.md" content="..."`
+
 ## Process
 
 ### 1. Understand the input
@@ -52,9 +62,10 @@ Connect with wikilinks: [[personas]], [[proyectos]], [[tickets]], [[other knowle
 
 ### 5. Update frontmatter
 
-- `last_updated` → today
-- `entries` → increment by 1
-- `maturity` → recalculate: seed (<3), growing (3-6), ready (7+)
+Use `obsidian property:set` for each property:
+- `obsidian property:set name=last_updated value="{today}" path="..."` → today
+- `obsidian property:set name=entries value=N path="..."` → increment by 1
+- `obsidian property:set name=maturity value="{seed|growing|ready}" path="..."` → recalculate: seed (<3), growing (3-6), ready (7+)
 
 ### 6. Check for content potential
 

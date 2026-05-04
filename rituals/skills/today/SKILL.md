@@ -16,6 +16,14 @@ Set `VAULT` = `{config.vault_path}` for all file operations below.
 
 Generator that creates or updates the daily note in Obsidian by reading existing vault data. Includes goal-aligned focus suggestion from goals.yaml and an active goals dashboard. Does not call external APIs — reads only markdown files that connectors have already written.
 
+## Vault I/O
+
+Use `obsidian` CLI for vault operations:
+- Read files: `obsidian read path="..."`
+- Create daily note (new): `obsidian create path="{daily_note_path}" content="..."` (full template as content with `\n` for newlines)
+- Update daily note (existing): read with `obsidian read path="..."`, then rewrite updated sections with `obsidian create path="..." content="..." overwrite`
+- Daily note path: `obsidian daily:path` (returns today's configured path)
+
 ## Process
 
 ### 1. Run sync-calendar first
@@ -26,7 +34,7 @@ Before generating, ensure calendar data is fresh:
 
 ### 2. Read vault data
 
-Read these files from the vault (skip gracefully if any is missing):
+Read these files from the vault using `obsidian read path="{file}"` for each source (skip gracefully if any is missing):
 
 | Source | File | What to extract |
 |--------|------|-----------------|

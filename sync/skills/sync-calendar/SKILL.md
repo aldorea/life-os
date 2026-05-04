@@ -15,6 +15,11 @@ Set `VAULT` = `{config.vault_path}` for all file operations below.
 
 Connector that reads calendar events via `{config.calendar.command}` and writes a markdown cache file to the Obsidian vault. Other skills (like `today` or `week`) read from this cache.
 
+## Vault I/O
+
+Use `obsidian` CLI for vault writes:
+- Write cache (create/overwrite): `obsidian create path="{config.structure.calendar_cache}" content="..." overwrite`
+
 ## Prerequisites
 
 - `{config.calendar.command}` must be installed (e.g., `brew install ical-buddy` for icalBuddy)
@@ -43,7 +48,7 @@ For each event:
 
 ### 3. Write cache file
 
-Write to: `VAULT/{config.structure.calendar_cache}`
+Write using `obsidian create path="{config.structure.calendar_cache}" content="..." overwrite`.
 
 ```markdown
 ---

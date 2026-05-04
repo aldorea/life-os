@@ -18,6 +18,12 @@ Ultra-fast capture to inbox. No classification, no tags, no questions. Just appe
 
 The goal is zero friction -- get the thought out of the user's head and into the system as fast as possible. Classification and tagging happen later via `/process-inbox`.
 
+## Vault I/O
+
+Use `obsidian` CLI for all vault writes:
+- Append to inbox: `obsidian append path="{config.structure.inbox}" content="- [ ] {text} <!-- {YYYY-MM-DD HH:MM} -->"`
+- If inbox doesn't exist yet: `obsidian create path="{config.structure.inbox}" content="# Inbox\n\n- [ ] {text} <!-- {YYYY-MM-DD HH:MM} -->"`
+
 ## Process
 
 ### 1. Capture input
@@ -28,19 +34,9 @@ If user provides no text (just `/dump` with nothing else), ask: "Que quieres cap
 
 ### 2. Append to Inbox
 
-Append to `VAULT/{config.structure.inbox}`:
-
-```markdown
-- [ ] {user's raw text} <!-- {YYYY-MM-DD HH:MM} -->
-```
-
-If the Inbox file doesn't exist, create it with header:
-
-```markdown
-# Inbox
-
-- [ ] {user's raw text} <!-- {YYYY-MM-DD HH:MM} -->
-```
+Use the obsidian CLI:
+- If inbox exists: `obsidian append path="{config.structure.inbox}" content="- [ ] {text} <!-- {YYYY-MM-DD HH:MM} -->"`
+- If inbox doesn't exist: `obsidian create path="{config.structure.inbox}" content="# Inbox\n\n- [ ] {text} <!-- {YYYY-MM-DD HH:MM} -->"`
 
 Append at the end of existing content, after the last line.
 
