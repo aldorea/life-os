@@ -36,14 +36,14 @@ Stop unless the user confirms.
 ## Step 2: Fetch Source Content
 
 **For URLs:**
-Use WebFetch to retrieve the page. Extract:
-- Main ideas and concepts
-- Key terminology
-- Tradeoffs or comparisons mentioned
-- Do NOT copy the entire article — synthesize
+Use `defuddle` to retrieve clean markdown content:
+```bash
+defuddle parse <url> --md
+```
+If defuddle is not installed: `npm install -g defuddle`. Then synthesize the output — extract main ideas, key terminology, tradeoffs. Do NOT copy the entire article.
 
 **For YouTube URLs:**
-Use WebFetch on the URL. Look for transcript, auto-generated captions, or video description to extract the main ideas.
+Use `defuddle parse <url> --md` first. If it returns insufficient content (no transcript/description), fall back to WebFetch. If both fail, log the attempt and skip — do not create empty pages.
 
 **For PDFs:**
 Read the file from the local path. Copy it to vault:
