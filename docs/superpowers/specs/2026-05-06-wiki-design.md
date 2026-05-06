@@ -217,7 +217,8 @@ Lint: 1 pass — 2 orphans resolved
 | Phase | Skills | Deliverable |
 |-------|--------|-------------|
 | 1 — Foundation | — | Vault structure: `wiki/` dir, `WIKI.md`, empty `index.md`, empty `log.md` |
-| 2 — Ingest | `/wiki:ingest` | Process URL, YouTube, PDF, text → create/update pages + index + log |
+| 2a — Ingest URL | `/wiki:ingest` | Process URLs → create/update pages + index + log. Validates end-to-end flow. |
+| 2b — Ingest all sources | `/wiki:ingest` | Add YouTube, PDF, and text support on top of the working URL flow |
 | 3 — Query | `/wiki:query` | Search pages + synthesize answer with citations |
 | 4 — Lint | `/wiki:lint` | Detect orphans, dead links, missing cross-refs, contradictions |
 | 5 — Digest | `/wiki:digest` | Activity summary by day/week/month from log |
