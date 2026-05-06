@@ -40,6 +40,12 @@
       "source": "./content",
       "version": "0.1.0",
       "description": "Content generation and nutrition: LinkedIn posts, blog drafts, and weekly shopping lists."
+    },
+    {
+      "name": "wiki",
+      "source": "./wiki",
+      "version": "0.1.0",
+      "description": "LLM Wiki: ingest, query, lint, and digest of personal knowledge."
     }
   ]
 }
