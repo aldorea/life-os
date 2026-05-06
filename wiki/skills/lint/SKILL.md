@@ -84,7 +84,7 @@ After all checks:
 - [[page-a]] says X; [[page-b]] says Y — [description of conflict]
 ```
 
-## Append to log.md
+## Step 6: Append to log.md
 
 ```
 obsidian append path="08 Resources/wiki/log.md" content="\n## YYYY-MM-DDTHH:MM | lint\nOrphans fixed: N\nDead links: N\nCross-refs added: N\nStale pages: N\nContradictions: N\n"
