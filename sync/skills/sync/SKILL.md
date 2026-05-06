@@ -12,7 +12,7 @@ If it doesn't exist, tell the user to copy `config.example.yaml` to `config.yaml
 
 Set `VAULT` = `{config.vault_path}` for all file operations below.
 
-Read `VAULT/{config.structure.connectors_config}` to determine which connectors are enabled (`connectors.<name>.enabled: true`). If a connector is not enabled or the key is missing, skip it and report "skipped".
+`obsidian vault="Obsidian Vault" read path="{config.structure.connectors_config}"` to determine which connectors are enabled (`connectors.<name>.enabled: true`). If a connector is not enabled or the key is missing, skip it and report "skipped".
 
 ## Overview
 

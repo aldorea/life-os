@@ -1,5 +1,6 @@
 ---
 name: sync-jira
+description: Use when syncing Jira tickets to the vault. Use when user says "sync jira", "sincroniza jira", "tickets", or invoked by /sync.
 ---
 
 # sync-jira
@@ -33,7 +34,7 @@ Use `obsidian` CLI for vault writes:
 
 ### 1. Read Jira project config
 
-Read `VAULT/{config.structure.connectors_config}` and parse the `jira.projects` array.
+`obsidian vault="Obsidian Vault" read path="{config.structure.connectors_config}"` and parse the `jira.projects` array.
 
 If no `jira:` section exists or `jira.projects` is empty:
 - Warn: "No hay proyectos Jira configurados en connectors.yaml. Configura al menos un proyecto para sincronizar."

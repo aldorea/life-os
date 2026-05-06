@@ -1,5 +1,6 @@
 ---
 name: sync-training
+description: Use when importing training data from Telegram bot or CSV into the vault training log. Use when user says "sync training", "importa entreno", "sync gym", or invoked by /sync.
 ---
 
 # sync-training

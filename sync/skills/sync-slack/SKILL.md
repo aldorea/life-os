@@ -1,5 +1,6 @@
 ---
 name: sync-slack
+description: Use when syncing Slack messages and action items to the vault inbox. Use when user says "sync slack", "sincroniza slack", or invoked by /sync.
 ---
 
 # sync-slack
@@ -24,7 +25,7 @@ Connector that reads Slack channels via MCP and extracts actionable items (decis
 
 ### 1. Read configured channels
 
-Read `VAULT/{config.structure.connectors_config}` for the list of channels to scan. If no config exists, ask the user which channels to monitor.
+`obsidian vault="Obsidian Vault" read path="{config.structure.connectors_config}"` for the list of channels to scan. If no config exists, ask the user which channels to monitor.
 
 ### 2. Scan channels for actionable items
 

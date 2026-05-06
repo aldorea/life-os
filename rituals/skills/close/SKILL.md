@@ -82,16 +82,16 @@ Wait for user selection. Map: 1 = rojo, 2 = amarillo, 3 = verde.
 
 ### 5. Handle pending tasks
 
-Read `VAULT/{config.structure.backlog}`. Find unchecked tasks `- [ ]` tagged with `#next` that were expected for today (current week tag `#YYYY-W##` or `#next`).
+`obsidian vault="Obsidian Vault" files folder="01 Tasks"` — list task notes. Find notes with `status: in-progress` or `status: todo` and `week == current-week` via reading each note's frontmatter.
 
 For each pending task, present options:
 
 ```
 Tarea: "[task text]"
-- (s) Mantener como #next para manana
-- (r) Reprogramar para otra semana
-- (m) Mover a Algun dia
-- (x) Ya no es relevante — descartar
+- (s) Mantener para mañana (sin cambio)
+- (r) Reprogramar → obsidian property:set name=week value="YYYY-W##" path="01 Tasks/{file}"
+- (m) Mover a algún día → obsidian property:set name=status value="someday" path="01 Tasks/{file}"
+- (x) Descartar → obsidian delete path="01 Tasks/{file}"
 ```
 
 Batch all decisions — present all pending tasks at once, collect all responses, then show the full plan:

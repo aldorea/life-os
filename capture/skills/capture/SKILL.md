@@ -113,6 +113,6 @@ maturity: seed
 - If source is a URL, include it for future reference
 - Spanish language for all content
 
-## Vault Path
+## Vault I/O
 
-`/Users/alfonso/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault`
+Use `obsidian vault="Obsidian Vault"` CLI for all vault reads and writes — never use the Read tool directly on vault files.

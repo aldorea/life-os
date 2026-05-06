@@ -20,7 +20,7 @@ Query skill that reads the training log and answers questions about exercise his
 
 ### 1. Read training data
 
-Read `VAULT/{config.structure.training_log}`. If it doesn't exist, suggest running `sync-training` first.
+`obsidian vault="Obsidian Vault" read path="{config.structure.training_log}"`. If it doesn't exist, suggest running `sync-training` first.
 
 ### 2. Answer the query
 

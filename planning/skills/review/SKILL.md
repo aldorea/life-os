@@ -1,6 +1,6 @@
 ---
 name: review
-description: "GTD Weekly Review — brain dump, process inbox, review backlog health, plan next week, generate weekly note. Use when user says \"review\", \"weekly\", \"revisión semanal\", \"planifica semana\", \"semana\", \"GTD review\"."
+description: Use when doing a GTD weekly review, planning the next week, or user says "review", "weekly", "revisión semanal", "planifica semana", "semana", "GTD review".
 ---
 
 # review
@@ -39,7 +39,7 @@ If user says "nada" / "no" → skip.
 
 ### Step 2: Process Inbox (~3 min)
 
-Read `02 Inbox.md`. If items exist:
+Run `obsidian vault="Obsidian Vault" read path="02 Inbox.md"`. If items exist:
 
 1. **Reformulate** vague items → concrete actions (verb + object + context)
 2. **Apply GTD decision tree:**
@@ -56,41 +56,41 @@ If Inbox empty → skip silently.
 
 ### Step 3: Review Backlog (~5 min)
 
-Read `01 Backlog.md` + `config/goals.yaml`. Run these checks:
+List all task notes: `obsidian vault="Obsidian Vault" files folder="01 Tasks"`. Read frontmatter of each note to check status/priority/week. Also read `obsidian vault="Obsidian Vault" read path="config/goals.yaml"`. Run these checks:
 
 #### 3a. Stale tasks
-Tasks tagged with past week (`#YYYY-W##` < current week) still pending.
+Notes with `week` property < current week and `status != "done"`.
 > **Tareas de semanas pasadas:**
-> - "Hacer X" (#2026-W10) — 3 semanas
+> - [[IDP-confirmar-JWT-TTL]] (week: 2026-W17) — 2 semanas
 > Para cada una: ¿mover a esta semana / algún día / eliminar?
+Apply: `obsidian vault="Obsidian Vault" property:set name=week value="YYYY-W##" path="01 Tasks/{file}"`
 
 #### 3b. Vague tasks
-Tasks without clear next action (no concrete verb, too abstract).
+Notes with title that lacks a concrete verb or is too abstract.
 > **Tareas poco concretas:**
-> - "tema API" → ¿Qué acción?
-Suggest reformulations.
+> - [[tema-api]] → ¿Qué acción?
+Suggest reformulations, update title if confirmed.
 
-#### 3c. Tag consistency
-- `#next` without `#work`/`#personal`
-- Week tag without `#next`
-- Seems blocked but no `#esperando`
-- `#esperando` tasks — ¿siguen bloqueadas?
+#### 3c. Property consistency
+- Notes with `status: todo` but `week` filled in → should be `in-progress`
+- Notes with `status: waiting` without context in body → add note
+- Notes with empty `project` → suggest one
 
 #### 3d. Week overload
-Count tasks for next week. If >15:
+Count notes where `week == next-week`. If >10:
 > **Semana sobrecargada:** X tareas. ¿Mover algunas?
 
 #### 3e. Goal alignment
-Compare tasks vs `config/goals.yaml`:
-- Any `in_progress` goal with no tasks this/next week?
-- Any deadline approaching (<2 weeks) with no activity?
+Compare notes by `project` vs `config/goals.yaml` in_progress goals:
+- Any `in_progress` goal with no tasks for this/next week?
+- Any `due` date approaching (<2 weeks)?
 Flag only if clearly relevant.
 
-Apply all confirmed changes to `01 Backlog.md`.
+Apply all confirmed changes with `obsidian vault="Obsidian Vault" property:set name={prop} value={val} path="01 Tasks/{file}"`.
 
 ### Step 4: Plan next week (~3 min)
 
-1. **Calculate capacity** from `config/constraints.yaml` + `08 Resources/calendar-cache.md`:
+1. **Calculate capacity** — read with `obsidian vault="Obsidian Vault" read path="config/constraints.yaml"` and `obsidian vault="Obsidian Vault" read path="08 Resources/calendar-cache.md"`:
    - Work hours, meeting hours, focus time available
    - Flag heavy days, free days
 
@@ -100,14 +100,15 @@ Apply all confirmed changes to `01 Backlog.md`.
    - Goal deadlines approaching
    - User preferences from `08 Resources/claude-memory/preferences.md`
 
-3. **Ask user to tag tasks** for next week with `#YYYY-W##`
+3. **Ask user to assign tasks** to next week
    - Present suggestions, user confirms
-   - Never auto-tag
+   - Never auto-assign
+   - Apply: `obsidian vault="Obsidian Vault" property:set name=week value="YYYY-W##" path="01 Tasks/{file}"`
 
 ### Step 5: Generate weekly note (~2 min)
 
 #### Retrospective (from previous week's dailies)
-Read `03 Daily/*.md` for the ending week:
+List files with `obsidian vault="Obsidian Vault" files folder="03 Daily"`, then read each daily note for the ending week with `obsidian vault="Obsidian Vault" read path="03 Daily/{date}.md"`:
 - Tasks completed (count work vs personal)
 - Energy trend (from Cierre entries)
 - Key wins mentioned
@@ -213,6 +214,6 @@ Revisión semanal completada:
 - Keep `tasks` code blocks as Obsidian plugin queries, not static lists
 - Retrospective only if previous week dailies exist
 
-## Vault Path
+## Vault I/O
 
-`/Users/alfonso/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault`
+Use `obsidian vault="Obsidian Vault"` CLI for all vault reads and writes — never use the Read tool directly on vault files.

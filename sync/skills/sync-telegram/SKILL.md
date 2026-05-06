@@ -1,6 +1,6 @@
 ---
 name: sync-telegram
-description: sync-telegram
+description: Use when syncing Telegram messages and action items to the vault inbox. Use when user says "sync telegram", "sincroniza telegram", or invoked by /sync.
 ---
 
 # sync-telegram
