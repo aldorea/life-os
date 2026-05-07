@@ -24,12 +24,6 @@
       "description": "Capture and inbox processing: quick dump, capture knowledge, process inbox, clarify tasks."
     },
     {
-      "name": "planning",
-      "source": "./planning",
-      "version": "0.1.0",
-      "description": "Planning tools: meeting prep, system status dashboard, backlog review, weekly review."
-    },
-    {
       "name": "training",
       "source": "./training",
       "version": "0.1.0",
@@ -40,6 +34,12 @@
       "source": "./content",
       "version": "0.1.0",
       "description": "Content generation and nutrition: LinkedIn posts, blog drafts, and weekly shopping lists."
+    },
+    {
+      "name": "wiki",
+      "source": "./wiki",
+      "version": "0.1.0",
+      "description": "LLM Wiki: ingest, query, lint, and digest of personal knowledge."
     }
   ]
 }

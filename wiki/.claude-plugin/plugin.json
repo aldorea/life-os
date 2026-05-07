@@ -1,0 +1,12 @@
+{
+  "name": "wiki",
+  "description": "LLM Wiki: ingest, query, lint, and digest of personal knowledge following the Karpathy pattern.",
+  "version": "0.1.0",
+  "author": {
+    "name": "aldorea",
+    "url": "https://github.com/aldorea"
+  },
+  "repository": "https://github.com/aldorea/life-os",
+  "license": "MIT",
+  "keywords": ["wiki", "knowledge", "obsidian", "productivity", "llm"]
+}

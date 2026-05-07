@@ -1,6 +1,6 @@
 ---
 name: sync-telegram
-description: sync-telegram
+description: Use when syncing Telegram messages and action items to the vault inbox. Use when user says "sync telegram", "sincroniza telegram", or invoked by /sync.
 ---
 
 # sync-telegram
@@ -62,10 +62,41 @@ source: telegram
 
 For each message where `type == "inbox"`:
 
+**Detect if the message is a URL** — check if `raw_text` starts with `http://` or `https://`.
+
+**If it's a URL → wiki ingest:**
+1. Run: `defuddle parse <raw_text> --md` to extract clean content
+2. Read `VAULT/08 Resources/wiki/index.md` to identify existing pages to update
+3. Synthesize content into one or more wiki pages (one concept per page) in `VAULT/08 Resources/wiki/pages/`
+4. Update `VAULT/08 Resources/wiki/index.md` with any new pages
+5. Append to `VAULT/08 Resources/wiki/log.md`:
+   ```
+   ## {YYYY-MM-DD}T{HH:MM} | ingest | {raw_text}
+   Pages created: <list or none>
+   Pages updated: <list or none>
+   Summary: via Telegram
+   ```
+   
+**If it's not a URL → inbox as normal:**
 Append to `VAULT/{config.structure.inbox}`:
 
 ```
 - [ ] {raw_text} (via Telegram, {date} {time})
+```
+
+After appending all inbox items, log the batch to `wiki/log.md`:
+
+```
+obsidian append path="08 Resources/wiki/log.md" content="\n## {YYYY-MM-DD}T{HH:MM} | inbox | telegram capture\nItems: <N>\nFirst line: \"<truncated raw_text of first item>\"\n"
+```
+
+One log entry per sync run (not per item) to keep the timeline scannable.
+
+### 3b. Log training captures
+
+Also append a log entry for training batches:
+```
+obsidian append path="08 Resources/wiki/log.md" content="\n## {YYYY-MM-DD}T{HH:MM} | training | telegram capture\nDate: {DD-MM-YYYY}\nLines: <N>\n"
 ```
 
 ### 4. Acknowledge processed messages
@@ -79,7 +110,7 @@ Use WebFetch tool for the POST request.
 Print summary:
 
 ```
-sync-telegram: {N} mensajes procesados ({X} training, {Y} inbox)
+sync-telegram: {N} mensajes procesados ({X} training, {Y} inbox, {Z} wiki)
 ```
 
 If 0 messages: `sync-telegram: sin mensajes nuevos`

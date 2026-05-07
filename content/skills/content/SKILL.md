@@ -19,10 +19,10 @@ Generates content drafts (LinkedIn posts, blog articles, talk outlines) from the
 
 ### Process
 
-1. Read the topic note from `08 Resources/knowledge/[topic].md`
-2. Read `08 Resources/knowledge/content-ideas.md` for existing ideas about this topic
-3. Read `config/voice.md` if it exists (writing style guide)
-4. Read `config/goals.yaml` to align with current content goals
+1. `obsidian vault="Obsidian Vault" read path="08 Resources/wiki/pages/[topic].md"` (knowledge unified into wiki on 2026-05-07)
+2. `obsidian vault="Obsidian Vault" read path="08 Resources/content-ideas.md"` for existing ideas about this topic
+3. `obsidian vault="Obsidian Vault" read path="config/voice.md"` if it exists (writing style guide)
+4. `obsidian vault="Obsidian Vault" read path="config/goals.yaml"` to align with current content goals
 5. Generate draft adapted to format:
 
 **LinkedIn post:**
@@ -119,6 +119,6 @@ sources: [list of knowledge notes used]
 | No content-ideas.md | Skip ideas section, generate from knowledge entries directly |
 | No goals.yaml | Skip alignment section |
 
-## Vault Path
+## Vault I/O
 
-`/Users/alfonso/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault`
+Use `obsidian vault="Obsidian Vault"` CLI for all vault reads and writes — never use the Read tool directly on vault files.

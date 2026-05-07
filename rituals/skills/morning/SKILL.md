@@ -10,7 +10,9 @@ description: Use when starting the day, running the morning routine, or chaining
 Read `~/.config/life-os/config.yaml`.
 If it doesn't exist, tell the user to copy `config.example.yaml` to `config.yaml` and fill in their values. Stop here.
 
-Set `VAULT` = `{config.vault_path}` for all file operations below.
+Set `VAULT` = `{config.vault_path}` for reference only.
+
+**Vault I/O:** Use `obsidian vault="Obsidian Vault"` CLI for all vault reads and writes — never use the Read tool directly on vault files.
 
 ## Overview
 
@@ -18,54 +20,73 @@ Morning ritual orchestrator. Three phases: (1) sync all data sources via /sync, 
 
 ## Process
 
-### 1. Announce start
+### 1. Load critical facts
+
+Before anything else, read the persistent base context:
+
+```
+obsidian vault="Obsidian Vault" read path="08 Resources/CRITICAL_FACTS.md"
+```
+
+Hold this content in context for the rest of the session — it's the stable identity layer (role, timezone, manager, location, preferences). Other skills (`week`, `close`, `status`) also read it. If the file is missing or only contains placeholders (`<FILL IN`), warn the user once:
+
+> "CRITICAL_FACTS.md tiene campos sin rellenar. Edítalo cuando puedas — afecta la calidad del contexto en cada ritual."
+
+Do not block. Continue regardless.
+
+### 2. Announce start
 
 ```
 Buenos dias! Iniciando rutina matutina...
 ```
 
-### 2. Sync all data sources
+### 3. Sync all data sources
 
 Execute the `/sync` skill (defined in `skills/sync/SKILL.md`). This runs all configured connectors (calendar, jira, slack, reminders, granola, training) sequentially and produces a status report.
 
 Capture the full /sync report output -- it will be included in the morning summary under the [Sync] section.
 
-If /sync fails entirely (e.g., config.yaml missing connectors_config path): note "Sync no disponible" and continue to Step 3.
+If /sync fails entirely (e.g., config.yaml missing connectors_config path): note "Sync no disponible" and continue to Step 4.
 
-### 3. Process inbox
+### 4. Process inbox
 
-Read `VAULT/{config.structure.inbox}`:
+`obsidian vault="Obsidian Vault" read path="{config.structure.inbox}"`:
 - If file doesn't exist or is empty (no items below header): skip, note "Inbox vacio"
 - If has items:
-  1. Read `VAULT/{config.structure.backlog}` for duplicate detection
-  2. Read `VAULT/{config.structure.goals}` for tag suggestions
+  1. `obsidian vault="Obsidian Vault" files folder="01 Tasks"` for duplicate detection
+  2. `obsidian vault="Obsidian Vault" read path="{config.structure.goals}"` for tag suggestions
   3. For each inbox item:
      - Reformulate vague items into concrete, actionable tasks
-     - Detect duplicates against existing Backlog
-     - Suggest tags from `{config.tags.contexts}`, `{config.tags.projects}`, `{config.tags.priority}`, `{config.tags.actionability}`
+     - Detect duplicates against existing tasks
+     - Suggest: status, priority, project, week, due, context
      - Add wikilinks for people, projects, tickets
   4. Present classification table to user:
      ```
-     ## Inbox -> Backlog
+     ## Inbox -> 01 Tasks
 
-     | # | Item original | Tarea propuesta | Tags | Seccion | Nota |
-     |---|--------------|-----------------|------|---------|------|
-     | 1 | raw item | Reformulated task | #tags | section | |
+     | # | Item original | Título propuesto | status | priority | project | week |
+     |---|--------------|-----------------|--------|----------|---------|------|
+     | 1 | raw item | Reformulated task | todo | normal | miportal | |
      ```
   5. Ask: "Aplico estos cambios? Puedes corregir cualquier linea."
-  6. On confirmation: move tasks to appropriate `{config.backlog_sections}` in Backlog, clear from Inbox
+  6. On confirmation: for each inbox item create note in `01 Tasks/`:
+     - File name: kebab-case del título, máx 50 chars
+     - `obsidian vault="Obsidian Vault" create path="01 Tasks/{name}.md" content="---\nstatus: {status}\npriority: {priority}\nproject: {project}\nweek: {week}\ndue: {due}\ncontext: [{context}]\n---\n\n# {title}\n" overwrite`
+     - Clear processed items from Inbox: rewrite inbox without those lines
 
 **This is the only interactive step** -- user confirms inbox processing before changes are applied.
 
 **Result:** `X items procesados` | `vacio` | `skipped` (with reason)
 
-### 4. Generate daily note
+### 5. Generate daily note
 
 This is the core output -- it MUST succeed.
 
-1. Read all vault data (calendar cache, backlog, jira notes, goals, constraints)
+1. Read all vault data using `obsidian vault="Obsidian Vault" read path="..."` for each:
+   - `{config.structure.calendar_cache}`, `{config.structure.backlog}`, `{config.structure.goals}`, `{config.structure.constraints}`
+   - Jira notes: `obsidian vault="Obsidian Vault" files folder="{config.structure.jira_notes}"`
 2. Determine focus of the day using goal alignment:
-   - Read `VAULT/{config.structure.goals}` (YAML format)
+   - `obsidian vault="Obsidian Vault" read path="{config.structure.goals}"` (YAML format)
    - Filter goals with status = "in_progress"
    - Score each: `weight * (1 - current/target) * deadline_urgency`
      - deadline_urgency = 1.0 if > 30 days, 1.5 if 14-30 days, 2.0 if < 14 days
@@ -85,7 +106,7 @@ This is the core output -- it MUST succeed.
 
 **Result:** `generada` | `actualizada` + path
 
-### 5. Morning summary
+### 6. Morning summary
 
 Present results in two clear sections. The [Sync] section is the /sync report verbatim. The [Ritual] section covers inbox and daily note only. This prevents duplication of sync information.
 

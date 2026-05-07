@@ -1,5 +1,6 @@
 ---
 name: sync-granola
+description: Use when syncing Granola meeting notes to the vault. Use when user says "sync granola", "sincroniza reuniones", "granola", or invoked by /sync.
 ---
 
 # sync-granola

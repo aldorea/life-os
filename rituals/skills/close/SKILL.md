@@ -28,6 +28,10 @@ Use `obsidian` CLI for vault operations:
 
 ## Process
 
+### 0.4. Load critical facts
+
+Read `08 Resources/CRITICAL_FACTS.md` as base context (role, timezone, manager, location, preferences). If missing, continue without warning — `morning` already warns once per day.
+
 ### 0.5. Sync Telegram captures
 
 Run the `sync-telegram` skill to fetch any unprocessed messages from the Telegram bot before starting the close ritual. This ensures training logs and inbox items captured during the day are in the vault before reflection.
@@ -82,16 +86,16 @@ Wait for user selection. Map: 1 = rojo, 2 = amarillo, 3 = verde.
 
 ### 5. Handle pending tasks
 
-Read `VAULT/{config.structure.backlog}`. Find unchecked tasks `- [ ]` tagged with `#next` that were expected for today (current week tag `#YYYY-W##` or `#next`).
+`obsidian vault="Obsidian Vault" files folder="01 Tasks"` — list task notes. Find notes with `status: in-progress` or `status: todo` and `week == current-week` via reading each note's frontmatter.
 
 For each pending task, present options:
 
 ```
 Tarea: "[task text]"
-- (s) Mantener como #next para manana
-- (r) Reprogramar para otra semana
-- (m) Mover a Algun dia
-- (x) Ya no es relevante — descartar
+- (s) Mantener para mañana (sin cambio)
+- (r) Reprogramar → obsidian property:set name=week value="YYYY-W##" path="01 Tasks/{file}"
+- (m) Mover a algún día → obsidian property:set name=status value="someday" path="01 Tasks/{file}"
+- (x) Descartar → obsidian delete path="01 Tasks/{file}"
 ```
 
 Batch all decisions — present all pending tasks at once, collect all responses, then show the full plan:
@@ -146,6 +150,26 @@ Based on Step 5 decisions (only after user confirmation):
 - **Tasks reprogrammed (r):** Update the week tag from current `#YYYY-W##` to the target week tag. Ask user which week if not specified.
 - **Tasks moved to Algun dia (m):** Remove `#next` and week tags, add `#someday` tag. Move to the "Algun dia" section in Backlog (last section per `{config.backlog_sections}`).
 - **Tasks marked irrelevant (x):** Mark as `- [x]` with note appended: "(Descartada)"
+
+### 8b. Bridge daily → wiki log
+
+Append a one-line pointer to the wiki activity log so the day shows up in `/wiki:digest` alongside ingests, queries, and synthesizes.
+
+Build a one-line summary from what just happened:
+- Foco del día (1 noun phrase)
+- Tareas completadas: count
+- Energía: rojo/amarillo/verde
+- Decisiones notables (de "Que harias diferente?" si hay algo accionable)
+
+Then:
+
+```
+obsidian append path="08 Resources/wiki/log.md" content="\n## YYYY-MM-DDTHH:MM | daily | [[YYYY-MM-DD]]\nFoco: <foco>\nCompletadas: N | Energia: <color>\nNote: <one-sentence highlight>\n"
+```
+
+Use the wikilink format `[[YYYY-MM-DD]]` so the log entry navigates back to the daily note in Obsidian. The date inside the wikilink must match `{config.structure.daily_notes}` filename pattern (typically `DD-MM-YYYY` or `YYYY-MM-DD` depending on user setup — read the actual filename to be sure).
+
+Skip this step if step 4 (interactive reflection) was skipped (no daily note generated).
 
 ### 9. Git commit result
 
