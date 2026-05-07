@@ -28,7 +28,7 @@ For each connector in this order -- calendar, granola, slack, jira, training, te
 | granola   | Execute `sync-granola` skill | `-` skipped (disabled) |
 | slack     | Execute `sync-slack` skill | `-` skipped (disabled) |
 | jira      | Execute `sync-jira` skill | `-` skipped (disabled) |
-| training  | Execute `sync-training` skill **only if `run_on != manual`** | `-` skipped (manual / disabled) |
+| training  | **Deprecated 2026-05-07**. Heavy app no longer used; training is captured via Telegram free-text → routed by `sync-telegram` to `10 Health/Training/`. Skip unconditionally. | `-` skipped (deprecated, telegram is the source) |
 | telegram  | Execute `sync-telegram` skill **only if `run_on == session_start`** (skip if `run_on == close`) | `-` skipped (runs at close / disabled) |
 
 Capture per-connector result: `ok` (with one-line detail) | `error` (with error message) | `skipped` (with reason).

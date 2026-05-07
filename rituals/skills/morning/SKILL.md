@@ -20,21 +20,35 @@ Morning ritual orchestrator. Three phases: (1) sync all data sources via /sync, 
 
 ## Process
 
-### 1. Announce start
+### 1. Load critical facts
+
+Before anything else, read the persistent base context:
+
+```
+obsidian vault="Obsidian Vault" read path="08 Resources/CRITICAL_FACTS.md"
+```
+
+Hold this content in context for the rest of the session — it's the stable identity layer (role, timezone, manager, location, preferences). Other skills (`week`, `close`, `status`) also read it. If the file is missing or only contains placeholders (`<FILL IN`), warn the user once:
+
+> "CRITICAL_FACTS.md tiene campos sin rellenar. Edítalo cuando puedas — afecta la calidad del contexto en cada ritual."
+
+Do not block. Continue regardless.
+
+### 2. Announce start
 
 ```
 Buenos dias! Iniciando rutina matutina...
 ```
 
-### 2. Sync all data sources
+### 3. Sync all data sources
 
 Execute the `/sync` skill (defined in `skills/sync/SKILL.md`). This runs all configured connectors (calendar, jira, slack, reminders, granola, training) sequentially and produces a status report.
 
 Capture the full /sync report output -- it will be included in the morning summary under the [Sync] section.
 
-If /sync fails entirely (e.g., config.yaml missing connectors_config path): note "Sync no disponible" and continue to Step 3.
+If /sync fails entirely (e.g., config.yaml missing connectors_config path): note "Sync no disponible" and continue to Step 4.
 
-### 3. Process inbox
+### 4. Process inbox
 
 `obsidian vault="Obsidian Vault" read path="{config.structure.inbox}"`:
 - If file doesn't exist or is empty (no items below header): skip, note "Inbox vacio"
@@ -64,7 +78,7 @@ If /sync fails entirely (e.g., config.yaml missing connectors_config path): note
 
 **Result:** `X items procesados` | `vacio` | `skipped` (with reason)
 
-### 4. Generate daily note
+### 5. Generate daily note
 
 This is the core output -- it MUST succeed.
 
@@ -92,7 +106,7 @@ This is the core output -- it MUST succeed.
 
 **Result:** `generada` | `actualizada` + path
 
-### 5. Morning summary
+### 6. Morning summary
 
 Present results in two clear sections. The [Sync] section is the /sync report verbatim. The [Ritual] section covers inbox and daily note only. This prevents duplication of sync information.
 

@@ -84,6 +84,21 @@ Append to `VAULT/{config.structure.inbox}`:
 - [ ] {raw_text} (via Telegram, {date} {time})
 ```
 
+After appending all inbox items, log the batch to `wiki/log.md`:
+
+```
+obsidian append path="08 Resources/wiki/log.md" content="\n## {YYYY-MM-DD}T{HH:MM} | inbox | telegram capture\nItems: <N>\nFirst line: \"<truncated raw_text of first item>\"\n"
+```
+
+One log entry per sync run (not per item) to keep the timeline scannable.
+
+### 3b. Log training captures
+
+Also append a log entry for training batches:
+```
+obsidian append path="08 Resources/wiki/log.md" content="\n## {YYYY-MM-DD}T{HH:MM} | training | telegram capture\nDate: {DD-MM-YYYY}\nLines: <N>\n"
+```
+
 ### 4. Acknowledge processed messages
 
 Call `POST {config.telegram.api_url}/messages/ack` with body `{"ids": [list of processed message IDs]}` and the same auth header.

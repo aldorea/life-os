@@ -1,6 +1,6 @@
 ---
 name: train
-description: Use when the user wants to check training history, personal records, progress, or says "train", "entrenamiento", "training", "gimnasio", "PRs", "cuánto levanto", "progreso gym", "heavy".
+description: Use when the user wants to check training history, personal records, progress, or says "train", "entrenamiento", "training", "gimnasio", "PRs", "cuánto levanto", "progreso gym".
 ---
 
 # train
@@ -20,7 +20,17 @@ Query skill that reads the training log and answers questions about exercise his
 
 ### 1. Read training data
 
-`obsidian vault="Obsidian Vault" read path="{config.structure.training_log}"`. If it doesn't exist, suggest running `sync-training` first.
+Training data lives at `{config.structure.training_log}/` (one file per session day, named `DD-MM-YYYY.md`). Captured by the Telegram bot and routed via `sync-telegram` — entries are free-text under `### Captura Telegram (HH:MM)` blocks tagged `#training-raw`.
+
+```
+obsidian vault="Obsidian Vault" files folder="{config.structure.training_log}"
+```
+
+For each query, read the relevant date files. Free-text format means parsing varies — extract exercises, weights, reps via pattern matching:
+- `EJERCICIO PESOxREPS RIRn` (e.g., `SENTADILLAS 70x6 RIR1`)
+- One exercise/set per line; multiple sets of same exercise = multiple lines.
+
+If the folder is empty for the queried period, tell the user no data and suggest sending entries to the Telegram bot.
 
 ### 2. Answer the query
 
@@ -56,7 +66,7 @@ For consistency:
 
 ### 4. Graceful degradation
 
-- No training log: suggest running `sync-training`
+- No training log for the period: suggest sending sessions to the Telegram bot, then `/sync:sync-telegram`
 - Exercise not found: ask if it has another name
 - Partial data: work with what's available, note gaps
 

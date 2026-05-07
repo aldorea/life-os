@@ -19,8 +19,8 @@ Generates content drafts (LinkedIn posts, blog articles, talk outlines) from the
 
 ### Process
 
-1. `obsidian vault="Obsidian Vault" read path="08 Resources/knowledge/[topic].md"`
-2. `obsidian vault="Obsidian Vault" read path="08 Resources/knowledge/content-ideas.md"` for existing ideas about this topic
+1. `obsidian vault="Obsidian Vault" read path="08 Resources/wiki/pages/[topic].md"` (knowledge unified into wiki on 2026-05-07)
+2. `obsidian vault="Obsidian Vault" read path="08 Resources/content-ideas.md"` for existing ideas about this topic
 3. `obsidian vault="Obsidian Vault" read path="config/voice.md"` if it exists (writing style guide)
 4. `obsidian vault="Obsidian Vault" read path="config/goals.yaml"` to align with current content goals
 5. Generate draft adapted to format:
