@@ -18,12 +18,6 @@
       "description": "Sync connectors: calendar, Granola, Jira, Slack, and Telegram into the Obsidian vault."
     },
     {
-      "name": "capture",
-      "source": "./capture",
-      "version": "0.1.0",
-      "description": "Capture and inbox processing: quick dump, capture knowledge, process inbox, clarify tasks."
-    },
-    {
       "name": "training",
       "source": "./training",
       "version": "0.1.0",
