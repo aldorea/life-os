@@ -10,6 +10,7 @@ Processes a source into the personal wiki at `08 Resources/wiki/`.
 ## Vault Paths
 - Pages: `08 Resources/wiki/pages/`
 - Drafts: `08 Resources/wiki/.drafts/` (pending approval — see Step 4b)
+- Raw notes: `08 Resources/wiki/sources/notes/` (single-source captures awaiting promotion — see Step 4b)
 - Index: `08 Resources/wiki/index.md`
 - Log: `08 Resources/wiki/log.md`
 - Schema: `08 Resources/wiki/WIKI.md`
@@ -77,28 +78,45 @@ For each page to update, read it first:
 obsidian read path="08 Resources/wiki/pages/<page-name>.md"
 ```
 
-## Step 4b: Decide draft vs publish
+## Step 4b: Decide raw vs draft vs publish
 
-For each NEW page (updates always go straight to `pages/`), decide the destination:
+The pipeline has THREE destinations, not two. **Default for any single-source ingest is `sources/notes/` (raw note), NOT a page.** Pages are earned, not created. Promote later when there's accumulated signal.
 
-**Auto-publish to `pages/`:**
-- Source is primary: academic paper, official docs (MDN, Python docs, RFCs, library README), book.
-- Source is inline text typed by the user (assume already curated).
-- The page already exists and this is just an update.
-- Estimated `confidence` is `high` or `medium`.
+Decide per-output:
 
-**Send to `.drafts/` (status: draft):**
-- Blog post (even reputable ones).
-- Twitter/X thread.
-- YouTube video without verified transcript.
-- URL shared via Telegram or other social channels.
-- Any new page where estimated `confidence` would be `low`.
+**1. Raw note → `sources/notes/<YYYY-MM-DD>-<slug>.md`** (default for single-source ingests):
+- Single fuente sin uso/experiencia propia (README oficial, artículo, video, paper individual, blog post).
+- Even if the source is "primary" (official docs, RFC, library README) — primary ≠ enough signal for a page.
+- Frontmatter: `type: raw-note`, `status: raw`, `source:`, `captured: YYYY-MM-DD`.
+- Body must include a `## Promoción` section with explicit criteria for when to graduate to `pages/`.
+- Not added to `index.md`. Logged in `log.md` under "Raw notes created".
 
-The estimated confidence (Step 5 heuristic) is the **primary signal**. Source type is secondary.
+**2. Draft → `08 Resources/wiki/.drafts/<kebab-name>.md`** (rare, only when justified):
+- New page with structure already worth reviewing, but confidence is `low` (single blog post, social thread, video without verified transcript).
+- Use draft instead of raw note only when the content is already shaped as a wiki page and just needs human approval — not when it's just notes from a source.
+- If you'd otherwise put it as raw, prefer raw. Drafts are for almost-pages.
 
-If unclear, default to draft — it's cheap to approve later, expensive to undo a noisy publish.
+**3. Published page → `08 Resources/wiki/pages/<kebab-name>.md`** (requires earned signal):
+- The page already exists and this ingest updates it (always allowed).
+- Inline text typed by the user describing their own experience or decision (already synthesized).
+- Two or more independent sources converging on the same concept (now there's enough to compare/synthesize).
+- The user's own use/experience with the thing (their opinion is the synthesis).
+- A second tool/source comparable to an existing raw note → can become a `comparison` page that subsumes the raw note.
 
-## Step 5: Write Pages
+**Decision rule:**
+
+> Single source + no user experience + no existing page to update → **raw note**, full stop.
+> A primary source (README, official docs) does NOT override this. Source authority ≠ accumulated signal.
+
+If unclear, default DOWN: raw before draft, draft before published. Pages are expensive to undo, raw notes are free to keep.
+
+## Step 5: Write Pages / Notes
+
+**Raw note format (default for single-source):**
+
+```
+obsidian create path="08 Resources/wiki/sources/notes/<YYYY-MM-DD>-<slug>.md" content="---\ntype: raw-note\nstatus: raw\ncaptured: YYYY-MM-DD\nsource: <url-or-path>\n---\n\n# <Title> — raw note\n\nFuente única. Sin promover a pages/ hasta que haya un segundo punto de contacto.\n\n## Qué es\n<2-4 sentences>\n\n## Ideas clave\n<bullets — extract, don't transcribe>\n\n## Por qué me interesa (anclaje personal)\n<connection to existing wiki pages, projects, or open questions>\n\n## Promoción\nPromover a pages/ cuando se cumpla cualquiera de:\n- <criterio 1: e.g., uso real con opinión propia>\n- <criterio 2: e.g., segundo tool comparable → comparison>\n- <criterio 3: e.g., conexión con patrón propio → synthesis>\n" overwrite
+```
 
 **New page format (publish path):**
 ```
@@ -152,13 +170,16 @@ obsidian create path="08 Resources/wiki/index.md" content="<updated content>" ov
 ## Step 7: Append to log.md
 
 ```
-obsidian append path="08 Resources/wiki/log.md" content="\n## YYYY-MM-DDTHH:MM | ingest | <source>\nPages created: <comma-separated list or 'none'>\nDrafts created: <comma-separated list or 'none'>\nPages updated: <comma-separated list or 'none'>\nSummary: <one sentence describing what was captured>\n"
+obsidian append path="08 Resources/wiki/log.md" content="\n## YYYY-MM-DDTHH:MM | ingest | <source>\nRaw notes created: <comma-separated list or 'none'>\nPages created: <comma-separated list or 'none'>\nDrafts created: <comma-separated list or 'none'>\nPages updated: <comma-separated list or 'none'>\nSummary: <one sentence describing what was captured>\n"
 ```
 
 ## Step 8: Report
 
 Tell the user:
-- Pages published (with names)
+- Raw notes created (with names) and the promotion criteria written into each
+- Pages published (with names) — and justify *why* a page was earned (existing page update, user-authored content, multiple sources, user experience)
 - Drafts created (with names) and remind them to run `/wiki:approve` to review
 - Pages updated (with names and what changed)
 - Cross-links added
+
+If an ingest produced **only raw notes** (the common case for single-source URL ingests), say so explicitly: "Capturado como raw note en `sources/notes/`. No se ha creado página todavía — promoveré cuando [criteria]."
