@@ -33,31 +33,48 @@ obsidian read path="08 Resources/wiki/pages/<page-name>.md"
 
 ### Step 3: Synthesize answer
 
-Write an answer that:
-- Directly addresses the question
-- Cites specific wiki pages using [[wikilinks]]
-- Notes gaps or contradictions between pages
-- Is grounded only in what the wiki contains — don't add external knowledge without flagging it
+Write a **plain, conversational answer in Spanish (or the user's language)** — not a formal report. The wiki pages already have formal structure; the query is the bridge between knowledge and the user's current decision, not a re-rendering of the pages.
+
+**Default format — adaptive plain prose:**
+
+Pick the sections that fit the question. Common pattern for "qué sé de X":
+
+```
+[1-2 sentence framing of what the user actually knows]
+
+**El problema** — [the pain X covers, in plain language]
+
+**La solución** — [what the approaches/tools/patterns do, in plain language]
+
+**Lo que ya estás haciendo bien** — [bullet or prose connecting to existing pages where their own systems already apply this]
+
+**Lo que te falta** — [explicit, actionable gaps; this is where contradictions or missing pages go, woven in as natural language, not as a "Tensions:" header]
+
+**Lo que aún no sabes** — [honesty about single-source notes, untested assumptions, open decisions]
+
+[Closing question inviting to deepen or change topic]
+```
+
+Other questions need other shapes. A single-fact lookup is one sentence. A "should I do X?" question is "qué dice tu wiki" + "qué falta para decidir". Pick the shape that respects the question.
+
+**Tone rules:**
+- Spanish llano y conversacional. First person where natural.
+- **Zero jargon** ("triada que sobrevive", "lente de spec-driven", "fricción no resuelta" — banned). Translate every technical phrase to everyday language.
+- **Zero formal meta-headers** (`**Answer:**`, `**From your wiki:**`, `**Tensions:**`, `**Gaps:**`). Their content goes in the prose.
+- **Wikilinks inline**, woven into sentences ("ya lo aplicas en [[ops-suite]]"). NOT as a closing bibliography list.
+- Short sentences. No nested bullets unless truly enumerating items.
+- End with a question that opens the conversation: "¿Quieres profundizar en X o cambiamos de tema?"
 
 **Honor frontmatter signals when citing:**
-- Skip pages with `status: deprecated` unless the question is historical. If used, label them `(deprecated)`.
-- Skip pages with `status: stub` — they have no content yet. Mention the stub as a gap instead.
-- When citing a page with `confidence: low`, flag it inline: `[[page]] (low confidence)`. Do not weight it equally with high-confidence pages.
-- If candidate pages declare `contradicts: [[other]]` between them, **surface the tension explicitly** — present both positions, do not silently pick one.
-- If a page declares `supersedes: [[old]]`, prefer the newer page; cite `[[old]]` only if specifically asked about prior state.
+- Skip pages with `status: deprecated` unless the question is historical. If used, label inline: "(deprecada)".
+- Skip pages with `status: stub` — mention as a gap.
+- When citing a page with `confidence: low`, flag inline naturally: "lo tienes en [[page]] pero con poca confianza".
+- If candidate pages have `contradicts: [[other]]`, surface the tension as plain prose inside "Lo que te falta" or in a dedicated paragraph — **do not** add a `**Tensions:**` header.
+- If a page declares `supersedes: [[old]]`, prefer the newer page.
 
-Format:
-```
-**Answer:** [direct answer]
+**Grounding:** answer only from the wiki. If you add external knowledge, say so plainly ("la wiki no lo cubre, pero en general...").
 
-**From your wiki:**
-- [[page-name]] — [what this page contributes]
-- [[other-page]] (low confidence) — [what this page contributes]
-
-**Tensions:** [if any pages contradict each other, summarize the disagreement]
-
-**Gaps:** [what's missing from the wiki that would improve this answer, if anything]
-```
+**When the formal format is OK:** only if the user explicitly asks for a structured/citation-heavy report (e.g., "dame un informe con citas"). Default is plain.
 
 ### Step 4: Offer to persist
 
