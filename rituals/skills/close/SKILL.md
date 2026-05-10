@@ -171,11 +171,55 @@ Use the wikilink format `[[YYYY-MM-DD]]` so the log entry navigates back to the 
 
 Skip this step if step 4 (interactive reflection) was skipped (no daily note generated).
 
+### 8c. Drift detection — goals ausentes
+
+Read `{config.structure.goals}` via `obsidian read path="{config.structure.goals}"`:
+- On error or missing file → skip this step silently and proceed to Step 9 (R9).
+
+Parse the file as YAML. Extract entries under `detection_goals:` where `status == "active"`:
+- If no active detection goals exist → proceed to Step 9 with no output (R8).
+
+**Scan each active goal:**
+
+For each goal, walk backward from yesterday collecting existing daily notes:
+- Format each date as `DD-MM-YYYY` (per `{config.daily.date_format}`)
+- Call `obsidian read path="{config.structure.daily_notes}/{date}.md"` per day
+- Skip days where the file does not exist (not counted as absences)
+- Stop when `alert_after_days` existing notes have been found, OR 30 calendar days have elapsed
+  - Note: `alert_after_days` is the target number of *existing notes* to scan, not calendar days. A goal with `alert_after_days: 3` whose user has 1 note in the last 30 days will check 1 note, not 3.
+- Check case-insensitive keyword presence: for each found note, check whether any keyword appears (lowercase keyword `.includes()` check against lowercase note content)
+- A goal is **flagged** when no keyword matched across all found notes AND at least 1 note was found
+
+**If any goals are flagged:**
+
+Show a warning block (in Spanish):
+
+```
+⚠️ Goals sin mención reciente:
+- [goal name]: N notas revisadas, sin mención de [keywords]
+```
+
+For each flagged goal, offer a pause toggle:
+```
+Pausar "[goal name]"? (s/n)
+```
+
+Wait for user response for each. For each goal the user chooses to pause:
+- Read `{config.structure.goals}` again, parse YAML
+- Locate the goal by `name`, set `status: paused`, set `paused_since: {today as YYYY-MM-DD}`
+- Active goals omit `paused_since` entirely; it is only present when `status == "paused"`. When resuming manually, set `status: active` and remove the `paused_since` field.
+- Serialize with a YAML library and write back via `fs.writeFileSync` (not `obsidian CLI` — goals.yaml is not an Obsidian markdown file)
+- If the write fails: surface the error to the user ("No se pudo guardar la pausa para [goal name]") but continue the ritual — do not abort
+- Set `pause_written = true`
+
 ### 9. Git commit result
 
 After all changes applied:
-- `git -C VAULT add {daily_note_path} {backlog_path}`
-- `git -C VAULT commit -m "ritual(close): end-of-day reflection {date}"`
+- `git -C {config.vault_path} add {daily_note_path} {backlog_path}`
+- If `pause_written` is true from Step 8c: also add `git -C {config.vault_path} add {config.structure.goals}`
+- `git -C {config.vault_path} commit -m "ritual(close): end-of-day reflection {date}"`
+
+Note: paths in `git add` are vault-relative (the `-C` flag already sets CWD to the vault).
 
 ### 10. Good night summary
 
@@ -186,7 +230,18 @@ Energia: [rojo/amarillo/verde]
 Pendientes: Y tareas para manana
 [if any moved to Algun dia: "Z tareas movidas a Algun dia"]
 [if any discarded: "W tareas descartadas"]
+```
 
+**Paused goals (R12):** Before "Descansa bien!", always attempt to list paused detection goals:
+- Read `{config.structure.goals}` via `obsidian read`; parse YAML
+- If `detection_goals` contains any entries with `status == "paused"`, append:
+  ```
+  Goals pausados:
+  - [goal name] (pausado desde [paused_since])
+  ```
+- If the file is missing or unreadable, skip this block silently (graceful degradation — R9 applies here too)
+
+```
 Descansa bien!
 ```
 
@@ -200,6 +255,8 @@ Descansa bien!
 | Backlog doesn't exist | Skip task management (steps 2, 3 task listing, 5, 8), do reflection only |
 | Daily note has no Agenda section | Skip meeting count in step 3 review |
 | Daily note has no Foco del dia | Show "Sin foco definido" in step 3 review |
+| `goals.yaml` missing or unreadable | Skip Step 8c silently; skip paused-goals block in Step 10 silently |
+| `goals.yaml` write failure (pause) | Surface error to user, continue ritual without applying the pause |
 
 ## Important Rules
 
