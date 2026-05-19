@@ -3,3 +3,5 @@ config.yaml
 .serena/
 .planning/reports/
 .worktrees/
+.claude/
+_bmad/

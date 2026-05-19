@@ -114,3 +114,5 @@ The `close` ritual appends a one-line `| daily |` entry to `wiki/log.md` with fo
 
 <!-- GSD:profile-start -->
 <!-- GSD:profile-end -->
+
+@_bmad-output/project-context.md
