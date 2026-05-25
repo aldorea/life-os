@@ -1,6 +1,5 @@
 ---
 name: sync-slack
-description: Use when syncing Slack messages and action items to the vault inbox. Use when user says "sync slack", "sincroniza slack", or invoked by /sync.
 ---
 
 # sync-slack

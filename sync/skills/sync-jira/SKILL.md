@@ -1,6 +1,5 @@
 ---
 name: sync-jira
-description: Use when syncing Jira tickets to the vault. Use when user says "sync jira", "sincroniza jira", "tickets", or invoked by /sync.
 ---
 
 # sync-jira

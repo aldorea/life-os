@@ -1,6 +1,5 @@
 ---
 name: sync-calendar
-description: Use when syncing Google Calendar events to the vault cache. Use when user says "sync calendar", "sincroniza calendario", or invoked by /sync.
 ---
 
 # sync-calendar
