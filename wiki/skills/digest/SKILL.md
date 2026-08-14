@@ -43,6 +43,7 @@ From filtered entries, count:
 - **Synthesize**: total entries with `| synthesize |`
 - **Approves**: total entries with `| approve |` (broken down by `Action: published` vs `discarded`)
 - **Lint passes**: total entries with `| lint |`
+- **Audits**: total entries with `| audit |` — structural audits from `/wiki:audit`. Each carries `Score: NN/100`, per-dimension percentages, and stage counts. Report the **latest score and its delta** versus the previous audit entry in the log (which may fall outside the period — scan back for it). The trend is the signal, not the count.
 - **Maintain**: total entries with `| maintain |` — bulk operations on existing pages (stub fills, refactors, status sweeps). Carries `Pages updated: N`.
 - **Corrections**: total entries with `| correction |` — rollbacks or fixes to previous wiki operations. Carries `Source`, `Action`, `Reason`. Important signal — should be highlighted, not buried.
 - **Daily closes**: total entries with `| daily |` — these are bridge entries appended by the `close` ritual. Each carries `Foco`, `Completadas`, `Energia`, `Note`. The digest uses them to build a per-day timeline of the period.
@@ -98,6 +99,7 @@ Knowledge (wiki)
   Queries:           N
   Approves:          N (X published, Y discarded)
   Lint:              N pass(es)
+  Audit:             NN/100 (<banda>, <+/-N vs anterior>)
   Maintain:          N (describe briefly if any)
   Corrections:       N (describe briefly — what was reverted and why)
 

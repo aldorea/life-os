@@ -1,6 +1,6 @@
 {
   "name": "wiki",
-  "description": "LLM Wiki: ingest, query, lint, and digest of personal knowledge following the Karpathy pattern.",
+  "description": "LLM Wiki: ingest, query, lint, audit, and digest of personal knowledge following the Karpathy pattern.",
   "version": "0.1.0",
   "author": {
     "name": "aldorea",

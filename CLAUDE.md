@@ -91,6 +91,7 @@ Rules:
 | `wiki:query` | `/wiki:query <question>` | Search pages and synthesize an **ephemeral** answer with citations. Ignores drafts. Suggests `/wiki:synthesize` when worth persisting. |
 | `wiki:synthesize` | `/wiki:synthesize [topic]` | Promote a query answer (or a topic over existing pages) into a persistent `type: synthesis` page. Closes the loop between query and wiki. |
 | `wiki:lint` | `/wiki:lint` | Health check: orphans, dead wikilinks, missing cross-refs, stale pages, contradictions, low-confidence stale, stale drafts, deprecated cleanup. |
+| `wiki:audit` | `/wiki:audit [--quick]` | Structural audit of the whole second brain (editor-in-chief). Refinery flow (raw → atoms → threads), atomicity, graph connectivity, source traceability, `[FRICTION]` contradictions, core themes, gaps. Emits a scored Traceability report + prioritized backlog. Read-only — recommends, never fixes. Complements `lint` (mechanical, fixes) rather than duplicating it. |
 | `wiki:digest` | `/wiki:digest [day\|week\|month]` | Activity summary from `log.md` + snapshot of pending drafts. Defaults to `week`. |
 
 Telegram URL shares are routed to `wiki:ingest` automatically by the Telegram sync.

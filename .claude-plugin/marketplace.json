@@ -33,7 +33,7 @@
       "name": "wiki",
       "source": "./wiki",
       "version": "0.1.0",
-      "description": "LLM Wiki: ingest, query, lint, and digest of personal knowledge."
+      "description": "LLM Wiki: ingest, query, lint, audit, and digest of personal knowledge."
     }
   ]
 }
